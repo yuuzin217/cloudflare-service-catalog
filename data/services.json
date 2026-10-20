@@ -26,9 +26,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/workers/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/workers/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/workers/"
+      "https://developers.cloudflare.com/workers/",
+      "https://developers.cloudflare.com/workers/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": 1,
@@ -114,9 +115,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/durable-objects/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/durable-objects/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/durable-objects/"
+      "https://developers.cloudflare.com/durable-objects/",
+      "https://developers.cloudflare.com/durable-objects/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -174,9 +176,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/"
+      "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
+      "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -265,9 +268,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/d1/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/d1/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/d1/"
+      "https://developers.cloudflare.com/d1/",
+      "https://developers.cloudflare.com/d1/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": 3,
@@ -297,9 +301,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/r2/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/r2/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/r2/"
+      "https://developers.cloudflare.com/r2/",
+      "https://developers.cloudflare.com/r2/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": 2,
@@ -327,9 +332,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/kv/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/kv/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/kv/"
+      "https://developers.cloudflare.com/kv/",
+      "https://developers.cloudflare.com/kv/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -357,9 +363,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/queues/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/queues/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/queues/"
+      "https://developers.cloudflare.com/queues/",
+      "https://developers.cloudflare.com/queues/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -397,10 +404,10 @@
   },
   {
     "id": "pipelines",
-    "name": "Pipelines",
+    "name": "Basin Pipelines",
     "iconLabel": "Pi",
-    "summaryJa": "リアルタイムデータを取り込み、R2へロードするデータパイプライン。",
-    "descriptionJa": "ストリーミングデータを取り込んで変換し、R2などの保存先へ届けるパイプラインを構築できます。",
+    "summaryJa": "Basinのデータ取り込み機能。イベントを取り込み、SQLで変換してR2へ書き出します。",
+    "descriptionJa": "Basinを構成するデータ取り込みサービスです。HTTPやWorkersからストリーミングイベントを受け取り、SQLで変換してR2上のIcebergテーブルなどへ書き出します。Basin全体のカタログ管理やSQL分析を担う親プラットフォームとは区別されます。",
     "category": "storage",
     "tags": [
       "データ取り込み",
@@ -412,16 +419,19 @@
       "分析用データの保存先への転送"
     ],
     "relatedServiceIds": [
+      "basin",
       "r2",
-      "basin"
+      "workers"
     ],
-    "docsUrl": "https://developers.cloudflare.com/pipelines/",
+    "docsUrl": "https://developers.cloudflare.com/basin-pipelines/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/basin-pipelines/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/pipelines/"
+      "https://developers.cloudflare.com/basin-pipelines/",
+      "https://developers.cloudflare.com/basin/",
+      "https://developers.cloudflare.com/basin-pipelines/platform/pricing/"
     ],
-    "releaseStatus": null,
+    "releaseStatus": "一般提供",
     "featuredOrder": null,
     "verifiedAt": "2026-10-20"
   },
@@ -429,8 +439,8 @@
     "id": "basin",
     "name": "Basin",
     "iconLabel": "Ba",
-    "summaryJa": "データを取り込み、カタログ化し、クエリするためのデータサービス。",
-    "descriptionJa": "Cloudflare上でデータを取り込み、カタログ化し、クエリするためのサービスです。",
+    "summaryJa": "Basin Pipelines・Basin Catalog・Basin SQLをまとめる、R2上の分析データ基盤。",
+    "descriptionJa": "BasinはCloudflareの分析データ基盤です。データ取り込みを担うBasin Pipelines、データを管理するBasin Catalog、分散SQLを提供するBasin SQLをまとめます。この項目はプラットフォーム全体を表し、個別の取り込み機能はBasin Pipelinesとして掲載しています。",
     "category": "storage",
     "tags": [
       "データ取り込み",
@@ -442,16 +452,19 @@
       "取り込んだデータの整理と検索"
     ],
     "relatedServiceIds": [
+      "pipelines",
       "r2",
-      "pipelines"
+      "workers"
     ],
     "docsUrl": "https://developers.cloudflare.com/basin/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/basin/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/basin/"
+      "https://developers.cloudflare.com/basin/",
+      "https://developers.cloudflare.com/basin-pipelines/",
+      "https://developers.cloudflare.com/basin/platform/pricing/"
     ],
-    "releaseStatus": null,
+    "releaseStatus": "一般提供",
     "featuredOrder": null,
     "verifiedAt": "2026-10-20"
   },
@@ -568,9 +581,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/workers-ai/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/workers-ai/"
+      "https://developers.cloudflare.com/workers-ai/",
+      "https://developers.cloudflare.com/workers-ai/platform/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": 4,
@@ -599,9 +613,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/ai-gateway/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/ai-gateway/reference/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/ai-gateway/"
+      "https://developers.cloudflare.com/ai-gateway/",
+      "https://developers.cloudflare.com/ai-gateway/reference/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -915,6 +930,35 @@
       "https://developers.cloudflare.com/page-shield/"
     ],
     "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cloud-workload-security",
+    "name": "Cloud Workload Security",
+    "iconLabel": "CWS",
+    "summaryJa": "クラウドAPIリクエストを検査し、危険な変更をポリシーで防ぐセキュリティサービス。",
+    "descriptionJa": "Cloudflare OneのCloud Workload Security（CWS）は、CloudflareやAWSなどへのAPIリクエストをプロキシ経由で検査し、ワークロードとRegoポリシーに基づいて危険な操作を制御します。Zero Trust契約が必要で、Freeプランでも利用できます。現在はBeta提供です。",
+    "category": "security",
+    "tags": [
+      "クラウドセキュリティ",
+      "API制御",
+      "Zero Trust"
+    ],
+    "useCases": [
+      "クラウド環境への危険な変更を防止",
+      "APIリクエストに対する組織ポリシーの適用"
+    ],
+    "relatedServiceIds": [],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/",
+      "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/platform/",
+      "https://developers.cloudflare.com/changelog/post/2026-10-19-cloud-workload-security-beta/"
+    ],
+    "releaseStatus": "Beta",
     "featuredOrder": null,
     "verifiedAt": "2026-10-20"
   },
@@ -1673,9 +1717,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/images/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/images/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/images/"
+      "https://developers.cloudflare.com/images/",
+      "https://developers.cloudflare.com/images/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
@@ -1704,9 +1749,10 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/stream/",
     "productUrl": null,
-    "pricingUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/stream/pricing/",
     "sourceUrls": [
-      "https://developers.cloudflare.com/stream/"
+      "https://developers.cloudflare.com/stream/",
+      "https://developers.cloudflare.com/stream/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,

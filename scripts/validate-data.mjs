@@ -82,6 +82,7 @@ for (const service of services) {
   check(service.pricingUrl === null || isOfficialUrl(service.pricingUrl), "Invalid pricingUrl: " + service.id);
   check(Array.isArray(service.sourceUrls) && service.sourceUrls.length > 0 && service.sourceUrls.every(isOfficialUrl), "Invalid sourceUrls: " + service.id);
   check(service.sourceUrls.includes(service.docsUrl), "docsUrl must also appear in sourceUrls: " + service.id);
+  check(service.pricingUrl === null || service.sourceUrls.includes(service.pricingUrl), "pricingUrl must also appear in sourceUrls: " + service.id);
   check(service.releaseStatus === null || (typeof service.releaseStatus === "string" && service.releaseStatus.length > 0), "Invalid releaseStatus: " + service.id);
   check(service.featuredOrder === null || (Number.isInteger(service.featuredOrder) && service.featuredOrder > 0), "Invalid featuredOrder: " + service.id);
   if (Number.isInteger(service.featuredOrder)) featuredOrders.push(service.featuredOrder);
@@ -99,6 +100,7 @@ for (const service of services) {
 
 const updateIds = new Set();
 const updateKeys = new Set();
+const updateSourceUrls = new Set();
 for (const update of updates) {
   check(typeof update.id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(update.id), "Invalid update id: " + update.id);
   check(!updateIds.has(update.id), "Duplicate update id: " + update.id);
@@ -115,6 +117,8 @@ for (const update of updates) {
     check(serviceIds.has(serviceId), "Unknown service id " + serviceId + " on update " + update.id);
   }
   check(isOfficialUrl(update.sourceUrl), "Invalid or non-Cloudflare sourceUrl: " + update.id);
+  check(!updateSourceUrls.has(update.sourceUrl), "Duplicate update source URL: " + update.id);
+  updateSourceUrls.add(update.sourceUrl);
   const updateKey = update.publishedAt + "|" + update.titleJa.normalize("NFKC").toLocaleLowerCase("ja-JP");
   check(!updateKeys.has(updateKey), "Duplicate update date and title: " + update.id);
   updateKeys.add(updateKey);

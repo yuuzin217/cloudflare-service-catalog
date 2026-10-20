@@ -417,7 +417,10 @@
     const header = makeElement("div", "detail-header");
     header.appendChild(createServiceMark(service, false));
     const heading = makeElement("div", "");
-    heading.appendChild(makeElement("h2", "", service.name));
+    const title = makeElement("h2", "", service.name);
+    title.id = "detailTitle";
+    title.tabIndex = -1;
+    heading.appendChild(title);
     heading.appendChild(makeElement("p", "", getCategoryName(service.category)));
     if (service.releaseStatus) heading.appendChild(makeElement("span", "status-chip", service.releaseStatus));
     header.appendChild(heading);
@@ -478,6 +481,7 @@
     elements.dialogContent.appendChild(checked);
 
     if (!elements.dialog.open) elements.dialog.showModal();
+    title.focus();
     elements.dialog.scrollTop = 0;
   }
 

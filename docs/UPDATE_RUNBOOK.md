@@ -40,20 +40,20 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 
 ## 5. Changelogから更新情報を追加する
 
-1. Cloudflare Changelogの記事を開き、記事に表示された公開日をpublishedAtに記録します。
-2. titleJaとsummaryJaは記事の変更内容を日本語で簡潔に要約します。
-3. serviceIdsには関連する既存サービスのidを設定します。
-4. typeは新サービスなら new-service、既存サービスの変更なら service-update、公開Betaなら public-beta を使います。
-5. sourceUrlには該当するChangelog記事のURLを記録し、verifiedAtには内容を確認した日付を記録します。
-6. 同じURL、公開日、正規化したタイトルの更新がないか確認します。
-7. サービスの提供状況と、個別機能のBeta状態は区別します。
+1. 前回確認した公開日から今回の確認日まで、Cloudflare Changelogを新しい順に確認します。確認期間と確認日を作業記録に残します。
+2. 収録済みサービスの機能、互換性、上限、認可・セキュリティ、提供開始、利用者に影響する修正など、利用者が判断や作業を変える更新を採用します。期間内の記事を一律に載せず、収録サービスとの関係と影響を説明できる記事を選びます。
+3. serviceIdsには記事が明示的に扱う既存サービスのidを設定します。複数OS向けに別々の記事があり、各プラットフォーム固有の変更を知らせる価値がある場合は、記事ごとに行を作ります。
+4. 収録サービス外の記事や、カタログの利用者に直接関係しない汎用ツールの記事は除外します。新製品が見つかった場合は、公式製品一覧とDocsで独立したサービスか確認し、既存のname・docsUrl・説明と照合して重複を避けます。カタログの収録範囲に含まれる場合だけ新サービスとして追加します。
+5. titleJaとsummaryJaは記事の変更を日本語で要約し、記事がPreviewなどと明示する段階をそのまま記します。typeは新サービスなら new-service、既存サービスの変更なら service-update、公開Betaの記事なら public-beta を使います。PreviewをBetaや一般提供と読み替えません。
+6. publishedAtにはChangelog記事に表示された公開日を記録します。機能の提供開始日、バージョン日付、Docsの最終更新日はpublishedAtに転記しません。verifiedAtには記事内容を確認した日を別に記録します。
+7. sourceUrlには該当する公式Changelog記事のURLを記録します。同じsourceUrl、公開日と正規化したタイトルの組み合わせが既にないか確認し、updates.jsonはpublishedAtの降順に保ちます。
 
 ## 6. 重複を検出する
 
 - services.jsonではidとUnicode NFKC正規化したnameの重複を確認します。
 - relatedServiceIdsが存在するサービスを参照していることを検証します。
 - 同一サービスに複数の説明が作られていないか、docsUrlとsourceUrlsも比較します。
-- updates.jsonではid、sourceUrl、publishedAtと正規化したtitleJaの組み合わせを確認します。
+- updates.jsonではidとsourceUrlの一意性、publishedAtと正規化したtitleJaの組み合わせを確認し、公開日の降順を保ちます。
 - 更新内容が既存項目に含まれる場合は、新しい行を追加せず既存項目を修正します。
 
 ## 7. JSONを検証する
@@ -62,7 +62,11 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 
     node scripts/validate-data.mjs
 
-成功時はカテゴリ数、サービス数、更新情報数が表示されます。JSON構文、必須項目、重複ID・名前、カテゴリ、関連参照、日付、公式URLを検証します。エラーが出た場合はPRを作らず修正して再実行します。
+成功時はカテゴリ数、サービス数、更新情報数が表示されます。JSON構文、必須項目、重複ID・名前、カテゴリ、関連参照、日付、公式URL、料金URLの根拠登録、Changelog URLの重複を検証します。P2回帰項目は次も実行します。
+
+    node scripts/test-regressions.mjs
+
+エラーが出た場合はPRを作らず修正して再実行します。
 
 ## 8. 更新後の画面を確認する
 
