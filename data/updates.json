@@ -1,0 +1,51 @@
+[
+  {
+    "id": "gateway-workers-public-beta-20261015",
+    "publishedAt": "2026-10-15",
+    "titleJa": "GatewayとWorkersの連携がパブリックベータに",
+    "summaryJa": "Cloudflare GatewayのHTTPポリシーからWorkersへ通信を転送する連携が、Zero Trustの全プランでパブリックベータとして提供されました。転送先のWorkerでリクエストやレスポンスを処理できます。",
+    "serviceIds": [
+      "gateway",
+      "workers"
+    ],
+    "type": "public-beta",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-15-gateway-workers-public-beta/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-build-tooling-20261014",
+    "publishedAt": "2026-10-14",
+    "titleJa": "Workers Buildsの既定ツールチェーンを更新",
+    "summaryJa": "Workers Buildsの既定ツールチェーンが更新され、Node.js、Python、Ruby、Go、Bunなどの新しいバージョンが適用されました。環境変数やバージョンファイルによる指定がある場合は、その指定が優先されます。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-runtime-grace-period-20261012",
+    "publishedAt": "2026-10-12",
+    "titleJa": "Workersのランタイム更新で処理継続の猶予が最大20分に",
+    "summaryJa": "Workersランタイム更新中、既存リクエストと接続の終了を待つ猶予が最大20分になりました。WebSocketを含め、猶予前に接続が切れる場合もあると案内されています。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-12-longer-runtime-update-grace-period/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-byoip-context-20261013",
+    "publishedAt": "2026-10-13",
+    "titleJa": "BYOIP宛てのサブリクエストでWorkersコンテキストを維持",
+    "summaryJa": "CloudflareがプロキシするBYOIPホスト宛てのWorkersサブリクエストで、CF-Workerヘッダーとcf.worker.upstream_zoneが維持されるようになりました。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/",
+    "verifiedAt": "2026-10-20"
+  }
+]
