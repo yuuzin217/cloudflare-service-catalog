@@ -3,16 +3,17 @@
 (function () {
   const CATEGORY_ICONS = {
     compute: [
-      ["path", { d: "M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z" }],
-      ["path", { d: "m4 12 8 4.5 8-4.5M4 16.5 12 21l8-4.5" }]
+      ["path", { d: "M8 3.5h8l5 8.5-5 8.5H8L3 12l5-8.5Z" }],
+      ["path", { d: "m10 7 5 5-5 5" }]
     ],
     storage: [
       ["ellipse", { cx: "12", cy: "5", rx: "8", ry: "3" }],
       ["path", { d: "M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" }]
     ],
     ai: [
-      ["path", { d: "m12 2 1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2Z" }],
-      ["path", { d: "m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" }]
+      ["rect", { x: "6", y: "6", width: "12", height: "12", rx: "2" }],
+      ["path", { d: "M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4" }],
+      ["path", { d: "M9 12h6M12 9v6" }]
     ],
     security: [
       ["path", { d: "M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" }],
@@ -23,8 +24,9 @@
       ["path", { d: "M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" }]
     ],
     media: [
-      ["circle", { cx: "12", cy: "12", r: "9" }],
-      ["path", { d: "m10 8 6 4-6 4V8Z" }]
+      ["rect", { x: "3", y: "4", width: "18", height: "16", rx: "2" }],
+      ["circle", { cx: "8.5", cy: "9.5", r: "1.5" }],
+      ["path", { d: "m4 17 5-5 3 3 3-4 5 6" }]
     ],
     "zero-trust": [
       ["circle", { cx: "9", cy: "8", r: "3" }],
@@ -49,14 +51,15 @@
     featuredList: document.getElementById("featuredList"),
     updatesList: document.getElementById("updatesList"),
     updatesEmpty: document.getElementById("updatesEmpty"),
-    latestPreview: document.getElementById("latestPreview"),
-    latestPreviewDate: document.getElementById("latestPreviewDate"),
-    latestPreviewTitle: document.getElementById("latestPreviewTitle"),
+    heroUpdatesList: document.getElementById("heroUpdatesList"),
     dialog: document.getElementById("serviceDialog"),
     dialogContent: document.getElementById("dialogContent"),
     lastVerifiedDate: document.getElementById("lastVerifiedDate"),
     menuToggle: document.getElementById("menuToggle"),
-    primaryNav: document.getElementById("primaryNav")
+    primaryNav: document.getElementById("primaryNav"),
+    headerVerifiedDate: document.getElementById("headerVerifiedDate"),
+    themeToggle: document.getElementById("themeToggle"),
+    searchSubmit: document.getElementById("searchSubmit")
   };
 
   let categories = [];
@@ -64,7 +67,7 @@
   let updates = [];
   let selectedCategory = "";
   let searchTerm = "";
-  let sortMode = "name";
+  let sortMode = "featured";
   let viewMode = "grid";
 
   function makeElement(tagName, className, content) {
@@ -134,9 +137,11 @@
   }
 
   function createServiceMark(service, isSmall) {
-    const mark = makeElement("span", "service-mark" + (isSmall ? " service-mark-small" : ""), service.iconLabel || service.name.slice(0, 2));
+    const mark = makeElement("span", "service-mark" + (isSmall ? " service-mark-small" : ""));
     mark.setAttribute("aria-hidden", "true");
     mark.dataset.category = service.category;
+    const category = getCategory(service.category);
+    mark.appendChild(createCategoryIcon(category ? category.icon : "compute"));
     return mark;
   }
 
@@ -178,7 +183,7 @@
 
       const nameRow = makeElement("span", "category-name");
       nameRow.appendChild(makeElement("span", "", category.name));
-      nameRow.appendChild(makeElement("span", "category-count", String(counts.get(category.id) || 0)));
+      nameRow.appendChild(makeElement("span", "category-count", String(counts.get(category.id) || 0) + "件"));
       button.appendChild(nameRow);
       button.appendChild(makeElement("span", "category-description", category.summaryJa));
       button.appendChild(makeElement("span", "category-chevron", "›"));
@@ -250,7 +255,7 @@
       docsLink.appendChild(makeElement("span", "link-external", "↗"));
       footer.appendChild(docsLink);
     }
-    const details = makeElement("button", "detail-link", "詳細を見る");
+    const details = makeElement("button", "detail-link", "詳細 →");
     details.type = "button";
     details.dataset.openService = service.id;
     details.setAttribute("aria-label", service.name + "の詳細を見る");
@@ -309,6 +314,21 @@
       link.href = "#update-" + update.id;
       item.appendChild(link);
       elements.sidebarUpdates.appendChild(item);
+    });
+  }
+
+  function buildHeroUpdates() {
+    elements.heroUpdatesList.replaceChildren();
+    orderedUpdates().slice(0, 5).forEach(function (update, index) {
+      const item = makeElement("li", "hero-update-item");
+      const time = makeElement("time", "", formatDate(update.publishedAt));
+      time.dateTime = update.publishedAt;
+      item.appendChild(time);
+      const link = makeElement("a", "", update.titleJa);
+      link.href = "#update-" + update.id;
+      item.appendChild(link);
+      if (index === 0) item.appendChild(makeElement("span", "hero-new-label", "最新"));
+      elements.heroUpdatesList.appendChild(item);
     });
   }
 
@@ -372,18 +392,6 @@
     });
   }
 
-  function buildLatestPreview() {
-    const first = orderedUpdates()[0];
-    if (!first) {
-      elements.latestPreview.hidden = true;
-      return;
-    }
-    elements.latestPreview.href = "#update-" + first.id;
-    elements.latestPreviewDate.textContent = formatDate(first.publishedAt);
-    elements.latestPreviewTitle.textContent = first.titleJa;
-    elements.latestPreview.setAttribute("aria-label", "最新情報: " + first.titleJa);
-  }
-
   function buildLastVerifiedDate() {
     const dates = services.map(function (service) {
       return service.verifiedAt;
@@ -392,7 +400,13 @@
     })).filter(Boolean).sort();
     const latest = dates.length ? dates[dates.length - 1] : "";
     elements.lastVerifiedDate.textContent = formatDate(latest) || "—";
-    if (latest) elements.lastVerifiedDate.dateTime = latest;
+    if (latest) {
+      elements.lastVerifiedDate.dateTime = latest;
+      elements.headerVerifiedDate.textContent = formatDate(latest);
+      elements.headerVerifiedDate.dateTime = latest;
+    } else {
+      elements.headerVerifiedDate.textContent = "—";
+    }
   }
 
   function openServiceDetails(serviceId) {
@@ -470,10 +484,10 @@
   function clearFilters() {
     searchTerm = "";
     selectedCategory = "";
-    sortMode = "name";
+    sortMode = "featured";
     viewMode = "grid";
     elements.search.value = "";
-    elements.sort.value = "name";
+    elements.sort.value = "featured";
     elements.gridView.classList.add("is-active");
     elements.listView.classList.remove("is-active");
     elements.gridView.setAttribute("aria-pressed", "true");
@@ -502,6 +516,15 @@
       searchTerm = button.dataset.query;
       renderServices();
       elements.search.focus();
+    });
+
+    function showSearchResults() {
+      document.getElementById("services").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    elements.searchSubmit.addEventListener("click", showSearchResults);
+    elements.search.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") showSearchResults();
     });
 
     document.getElementById("showAllCategories").addEventListener("click", function () {
@@ -561,6 +584,14 @@
       elements.menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       elements.menuToggle.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
     });
+
+    elements.themeToggle.addEventListener("click", function () {
+      const isDark = document.body.dataset.theme !== "dark";
+      document.body.dataset.theme = isDark ? "dark" : "light";
+      elements.themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+      elements.themeToggle.setAttribute("aria-label", isDark ? "ライトモードに切り替え" : "ダークモードに切り替え");
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", isDark ? "#111b2c" : "#ffffff");
+    });
   }
 
   async function loadCatalog() {
@@ -580,9 +611,9 @@
 
       buildCategoryGrid();
       buildSidebarUpdates();
+      buildHeroUpdates();
       buildFeaturedList();
       buildUpdatesList();
-      buildLatestPreview();
       buildLastVerifiedDate();
       renderServices();
       elements.loadError.hidden = true;

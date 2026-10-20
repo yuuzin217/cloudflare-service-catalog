@@ -16,6 +16,7 @@ Cloudflareが運営するサイトではありません。Cloudflareおよび各
 
 - index.html: ページ構造とメタ情報
 - assets/styles.css: レスポンシブ表示とデザイン
+- assets/hero-network.svg: ヒーロー背景のネットワーク図
 - assets/app.js: 検索、絞り込み、並び替え、詳細表示
 - data/categories.json: カテゴリ名、順序、説明
 - data/services.json: サービス情報
