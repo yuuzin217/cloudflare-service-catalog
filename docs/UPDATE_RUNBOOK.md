@@ -54,6 +54,7 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 - relatedServiceIdsが存在するサービスを参照していることを検証します。
 - 同一サービスに複数の説明が作られていないか、docsUrlとsourceUrlsも比較します。
 - updates.jsonではidとsourceUrlの一意性、publishedAtと正規化したtitleJaの組み合わせを確認し、公開日の降順を保ちます。
+- 同じサービス内のsourceUrls、サービスのdocsUrlも重複させません。URLを変更するときは新しい公式URLを確認し、pricingUrlを設定する場合は同じURLをsourceUrlsにも追加します。
 - 更新内容が既存項目に含まれる場合は、新しい行を追加せず既存項目を修正します。
 
 ## 7. JSONを検証する
@@ -62,11 +63,13 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 
     node scripts/validate-data.mjs
 
-成功時はカテゴリ数、サービス数、更新情報数が表示されます。JSON構文、必須項目、重複ID・名前、カテゴリ、関連参照、日付、公式URL、料金URLの根拠登録、Changelog URLの重複を検証します。P2回帰項目は次も実行します。
+成功時はカテゴリ数、サービス数、更新情報数が表示されます。JSON構文、必須項目、重複ID・名前・主要URL、カテゴリ、関連参照、許可された提供状況、日付と更新日の降順、公式URL、料金URLの根拠登録、Changelog URLの重複を検証します。P2回帰項目は次も実行します。
 
     node scripts/test-regressions.mjs
 
 エラーが出た場合はPRを作らず修正して再実行します。
+
+回帰テストは更新可能なカタログ値をスナップショットとして固定しません。最新記事の日付や過去記事ID一覧、現在の提供状況、料金URLの有無・パスを固定せず、日付順、許可された提供状況、公式ドメイン、sourceUrlsによる根拠、IDと参照の整合性を検証します。新記事追加、公式料金URLの変更・新規設定、Betaから一般提供への変更が通り、不正な日付・重複・参照が失敗することを`node scripts/test-regressions.mjs`で確認します。許容する提供状況は現在`null`、`Beta`、`Open beta`、`一般提供`です。新しい提供状況の公式表記を採用するときは、`scripts/catalog-validation.mjs`の許可値と回帰ケースを一緒に更新します。テストの期待値を単に削除せず、更新後も守るべきデータ品質の条件を検証します。
 
 ## 8. 更新後の画面を確認する
 

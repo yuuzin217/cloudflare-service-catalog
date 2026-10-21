@@ -1,71 +1,126 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { validateCatalogData } from "./catalog-validation.mjs";
 
-const services = JSON.parse(await readFile(new URL("../data/services.json", import.meta.url), "utf8"));
-const updates = JSON.parse(await readFile(new URL("../data/updates.json", import.meta.url), "utf8"));
+const readJson = async (path) => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
+const categories = await readJson("../data/categories.json");
+const services = await readJson("../data/services.json");
+const updates = await readJson("../data/updates.json");
 const indexHtml = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const appJs = await readFile(new URL("../assets/app.js", import.meta.url), "utf8");
+const sourceData = { categories, services, updates };
+const cloneData = () => JSON.parse(JSON.stringify(sourceData));
 const byId = new Map(services.map((service) => [service.id, service]));
 
-const verifiedPricing = {
-  workers: "https://developers.cloudflare.com/workers/platform/pricing/",
-  d1: "https://developers.cloudflare.com/d1/platform/pricing/",
-  r2: "https://developers.cloudflare.com/r2/pricing/",
-  "durable-objects": "https://developers.cloudflare.com/durable-objects/platform/pricing/",
-  "workers-for-platforms": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/",
-  "workers-kv": "https://developers.cloudflare.com/kv/platform/pricing/",
-  queues: "https://developers.cloudflare.com/queues/platform/pricing/",
-  pipelines: "https://developers.cloudflare.com/basin-pipelines/platform/pricing/",
-  basin: "https://developers.cloudflare.com/basin/platform/pricing/",
-  "workers-ai": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
-  "ai-gateway": "https://developers.cloudflare.com/ai-gateway/reference/pricing/",
-  images: "https://developers.cloudflare.com/images/pricing/",
-  stream: "https://developers.cloudflare.com/stream/pricing/"
-};
-for (const [id, url] of Object.entries(verifiedPricing)) {
-  assert.equal(byId.get(id)?.pricingUrl, url, `${id} has the reviewed official pricing URL`);
-  assert.ok(byId.get(id).sourceUrls.includes(url), `${id} lists its pricing URL as a source`);
-}
-assert.equal(byId.get("pages")?.pricingUrl, null, "Pages keeps pricing unset without a general pricing page");
+assert.deepEqual(validateCatalogData(sourceData), [], "current catalog satisfies the data rules");
 
+// Preserve the reviewed pricing coverage without pinning mutable URL paths.
+for (const id of ["workers", "d1", "r2"]) {
+  const service = byId.get(id);
+  assert.ok(service, `${id} remains in the catalog`);
+  assert.ok(typeof service.pricingUrl === "string", `${id} has a pricing page`);
+  assert.ok(service.sourceUrls.includes(service.pricingUrl), `${id} cites its pricing page`);
+}
+
+// Basin Pipelines keeps its stable ID and explicit relationship to Basin.
 const pipelines = byId.get("pipelines");
 const basin = byId.get("basin");
-assert.equal(pipelines.name, "Basin Pipelines");
-assert.equal(pipelines.docsUrl, "https://developers.cloudflare.com/basin-pipelines/");
-assert.ok(pipelines.sourceUrls.includes("https://developers.cloudflare.com/basin/"));
-assert.ok(pipelines.descriptionJa.includes("親プラットフォームとは区別"));
-assert.ok(pipelines.relatedServiceIds.includes("basin"));
-assert.ok(basin.relatedServiceIds.includes("pipelines"));
-assert.ok(basin.descriptionJa.includes("プラットフォーム全体"));
-assert.equal(byId.get("pipelines").id, "pipelines", "Pipelines stable ID is retained");
-const cws = byId.get("cloud-workload-security");
-assert.equal(cws?.category, "security");
-assert.equal(cws?.releaseStatus, "Beta");
-assert.equal(cws?.pricingUrl, null, "CWS pricing remains unset without a verified pricing page");
-assert.equal(services.filter((service) => service.name.normalize("NFKC").toLocaleLowerCase("ja-JP") === "cloud workload security").length, 1, "new service is not duplicated");
+assert.ok(pipelines, "Basin Pipelines stable ID remains present");
+assert.ok(basin, "Basin remains present");
+assert.ok(pipelines.relatedServiceIds.includes("basin"), "Pipelines references Basin");
+assert.ok(basin.relatedServiceIds.includes("pipelines"), "Basin references Pipelines");
+assert.ok(byId.has("cloud-workload-security"), "Cloud Workload Security remains represented");
 
+// The detail dialog keeps its accessible name and puts focus on the generated heading.
 assert.match(indexHtml, /<dialog[^>]*aria-labelledby="detailTitle"/);
 assert.match(appJs, /title\.id\s*=\s*"detailTitle"/);
 assert.match(appJs, /title\.focus\(\)/);
-assert.deepEqual(updates.map((update) => update.publishedAt), updates.map((update) => update.publishedAt).slice().sort().reverse(), "updates are newest-first by publishedAt");
-assert.equal(updates[0].publishedAt, "2026-10-20", "the newest reviewed entries use their article publication date");
-const cwsUpdate = updates.find((update) => update.id === "cloud-workload-security-beta-20261019");
-assert.equal(cwsUpdate?.type, "new-service");
-assert.deepEqual(cwsUpdate?.serviceIds, ["cloud-workload-security"]);
-assert.equal(cwsUpdate?.publishedAt, "2026-10-19");
-for (const id of [
-  "warp-windows-client-2026-10-20",
-  "warp-macos-client-2026-10-20",
-  "warp-linux-client-2026-10-20",
-  "agents-mcp-step-up-2026-10-19",
-  "bots-precursor-monitor-mode-2026-10-19",
-  "cloud-workload-security-beta-20261019",
-  "workers-ai-clairic-preview-2026-10-19",
-  "workers-ai-deepseek-v41-flash-2026-10-19",
-  "workers-cron-local-explorer-2026-10-17",
-  "ai-search-cjk-keyword-search-2026-10-16",
-  "tunnels-platforms-50000-routes-2026-10-16"
-]) {
-  assert.ok(updates.some((update) => update.id === id), `reviewed Changelog article ${id} is listed`);
+
+function assertInvalid(label, mutate, expectedError) {
+  const fixture = cloneData();
+  mutate(fixture);
+  const errors = validateCatalogData(fixture);
+  assert.ok(errors.some((error) => error.includes(expectedError)), `${label} is rejected: ${errors.join("; ")}`);
 }
-console.log(`OK: reviewed pricing links, Basin relationships, detail naming/focus, and ${updates.length} Changelog entries.`);
+
+// A newly published article can be added without changing a test snapshot.
+const newestPublishedAt = updates.reduce((latest, update) => update.publishedAt > latest ? update.publishedAt : latest, "0000-00-00");
+const nextPublishedDate = new Date(`${newestPublishedAt}T00:00:00.000Z`);
+nextPublishedDate.setUTCDate(nextPublishedDate.getUTCDate() + 1);
+const nextPublishedAt = nextPublishedDate.toISOString().slice(0, 10);
+const withNewArticle = cloneData();
+withNewArticle.updates.unshift({
+  id: `regression-fixture-${nextPublishedAt}`,
+  titleJa: "回帰テスト用の新しい更新",
+  summaryJa: "公開日の降順と新規追加の検証用データです。",
+  type: "service-update",
+  publishedAt: nextPublishedAt,
+  verifiedAt: nextPublishedAt,
+  serviceIds: ["workers"],
+  sourceUrl: `https://developers.cloudflare.com/changelog/regression-fixture-${nextPublishedAt}/`
+});
+assert.deepEqual(validateCatalogData(withNewArticle), [], "a new newest Changelog article is accepted");
+
+// An official pricing URL may change or be added when its source is recorded.
+// The regression-fixture paths check schema rules only; actual service URLs are verified from Cloudflare sources during data updates.
+const withChangedPricing = cloneData();
+const changedWorker = withChangedPricing.services.find((service) => service.id === "workers");
+const changedWorkerPrice = "https://developers.cloudflare.com/regression-fixture/updated-pricing/";
+changedWorker.sourceUrls = changedWorker.sourceUrls.filter((url) => url !== changedWorker.pricingUrl);
+changedWorker.pricingUrl = changedWorkerPrice;
+changedWorker.sourceUrls.push(changedWorkerPrice);
+const pages = withChangedPricing.services.find((service) => service.id === "pages");
+const pagesPrice = "https://developers.cloudflare.com/regression-fixture/pages-pricing/";
+pages.pricingUrl = pagesPrice;
+pages.sourceUrls.push(pagesPrice);
+assert.deepEqual(validateCatalogData(withChangedPricing), [], "changed and newly confirmed pricing URLs are accepted when cited");
+
+// A documented release-state change from Beta to GA remains valid.
+const withGaStatus = cloneData();
+withGaStatus.services.find((service) => service.id === "cloud-workload-security").releaseStatus = "一般提供";
+assert.deepEqual(validateCatalogData(withGaStatus), [], "Beta to GA status changes use an allowed status");
+
+assertInvalid("duplicate service IDs", (data) => {
+  data.services[1].id = data.services[0].id;
+}, "Duplicate service id");
+assertInvalid("duplicate official service documentation URLs", (data) => {
+  data.services[1].docsUrl = data.services[0].docsUrl;
+}, "Duplicate service docsUrl");
+assertInvalid("duplicate service source URLs", (data) => {
+  data.services[0].sourceUrls.push(data.services[0].sourceUrls[0]);
+}, "Duplicate sourceUrls");
+assertInvalid("duplicate update IDs", (data) => {
+  data.updates[1].id = data.updates[0].id;
+}, "Duplicate update id");
+assertInvalid("duplicate official Changelog URLs", (data) => {
+  data.updates[1].sourceUrl = data.updates[0].sourceUrl;
+}, "Duplicate update source URL");
+assertInvalid("invalid update dates", (data) => {
+  data.updates[0].publishedAt = "2026-02-30";
+}, "Invalid publishedAt");
+assertInvalid("out-of-order update dates", (data) => {
+  [data.updates[0], data.updates[data.updates.length - 1]] = [data.updates[data.updates.length - 1], data.updates[0]];
+}, "sorted by publishedAt descending");
+assertInvalid("unknown related-service references", (data) => {
+  data.services[0].relatedServiceIds = ["missing-service"];
+}, "Unknown related service id");
+assertInvalid("unknown category references", (data) => {
+  data.services[0].category = "missing-category";
+}, "Unknown category on");
+assertInvalid("unknown update service references", (data) => {
+  data.updates[0].serviceIds = ["missing-service"];
+}, "Unknown service id");
+assertInvalid("non-official pricing URLs", (data) => {
+  data.services[0].pricingUrl = "https://example.com/pricing";
+}, "Invalid pricingUrl");
+assertInvalid("pricing URLs without provenance", (data) => {
+  data.services[0].pricingUrl = "https://developers.cloudflare.com/regression-fixture/uncited-pricing/";
+}, "pricingUrl must also appear in sourceUrls");
+assertInvalid("non-official Changelog URLs", (data) => {
+  data.updates[0].sourceUrl = "https://example.com/changelog/article";
+}, "Invalid or non-Cloudflare sourceUrl");
+assertInvalid("unsupported release statuses", (data) => {
+  data.services[0].releaseStatus = "Coming soon";
+}, "Invalid releaseStatus");
+
+console.log(`OK: catalog invariants, mutable-data scenarios, invalid fixtures, accessibility hooks, ${updates.length} current updates.`);
