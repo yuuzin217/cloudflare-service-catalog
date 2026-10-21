@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" fill="none">
+  <defs>
+    <radialGradient id="globe" cx="58%" cy="46%" r="57%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".88"/>
+      <stop offset=".64" stop-color="#ffd8aa" stop-opacity=".67"/>
+      <stop offset="1" stop-color="#ff9d48" stop-opacity=".09"/>
+    </radialGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#78b4ff" stop-opacity=".16"/>
+    </linearGradient>
+  </defs>
+  <circle cx="565" cy="188" r="235" fill="url(#globe)"/>
+  <g stroke="#fff" stroke-opacity=".53" stroke-width="1.25">
+    <ellipse cx="565" cy="188" rx="235" ry="86"/>
+    <ellipse cx="565" cy="188" rx="235" ry="151"/>
+    <ellipse cx="565" cy="188" rx="235" ry="211"/>
+    <ellipse cx="565" cy="188" rx="82" ry="235"/>
+    <ellipse cx="565" cy="188" rx="159" ry="235"/>
+    <path d="M330 188h470M347 105c107 58 329 58 436 0M347 271c107-58 329-58 436 0"/>
+  </g>
+  <g stroke="#f9a04b" stroke-opacity=".62" stroke-width="1.4">
+    <path d="m342 205 83-100 76 40 80-80 88 47 72-21 48 75"/>
+    <path d="m389 280 82-63 80 22 75-88 79 65 82-4"/>
+    <path d="m475 145 7 72m19-72 80 62m8-142 2 80m-166-40 72 74m226-87-26 45"/>
+  </g>
+  <g fill="#ff8b19" stroke="#fff" stroke-width="2">
+    <circle cx="342" cy="205" r="5"/><circle cx="425" cy="105" r="6"/><circle cx="501" cy="145" r="5"/>
+    <circle cx="581" cy="65" r="5"/><circle cx="669" cy="112" r="6"/><circle cx="741" cy="91" r="5"/>
+    <circle cx="789" cy="166" r="5"/><circle cx="389" cy="280" r="4"/><circle cx="471" cy="217" r="6"/>
+    <circle cx="551" cy="239" r="4"/><circle cx="626" cy="151" r="5"/><circle cx="705" cy="216" r="5"/><circle cx="787" cy="212" r="4"/>
+  </g>
+  <g fill="#fff" stroke="#f3a14c" stroke-width="1.4">
+    <circle cx="515" cy="182" r="4"/><circle cx="599" cy="132" r="3.8"/><circle cx="653" cy="192" r="4"/>
+    <circle cx="541" cy="302" r="3.5"/><circle cx="745" cy="267" r="4"/><circle cx="451" cy="62" r="3.5"/>
+  </g>
+  <path d="M295 358c103-30 184-20 269 1 99 24 190 15 336-12" stroke="url(#blue)" stroke-width="26"/>
+</svg>

@@ -1,0 +1,1791 @@
+[
+  {
+    "id": "workers",
+    "name": "Workers",
+    "iconLabel": "W",
+    "summaryJa": "JavaScriptなどのコードをCloudflareのネットワーク上で実行するサーバーレス基盤。",
+    "descriptionJa": "JavaScriptやTypeScriptなどのコードをCloudflareのグローバルネットワーク上で実行し、APIやWebアプリケーションを提供します。",
+    "category": "compute",
+    "tags": [
+      "サーバーレス",
+      "エッジ",
+      "JavaScript"
+    ],
+    "useCases": [
+      "APIやWebアプリケーションの実行",
+      "バックエンド処理のエッジ化"
+    ],
+    "relatedServiceIds": [
+      "d1",
+      "r2",
+      "workers-kv",
+      "durable-objects",
+      "queues",
+      "workflows",
+      "workers-ai"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/workers/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/workers/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/workers/",
+      "https://developers.cloudflare.com/workers/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": 1,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "pages",
+    "name": "Pages",
+    "iconLabel": "Pg",
+    "summaryJa": "GitリポジトリやアップロードからWebサイトをビルドして公開するホスティングサービス。",
+    "descriptionJa": "Git連携または直接アップロードを使って、静的サイトやフロントエンドアプリケーションをビルド・デプロイできます。",
+    "category": "compute",
+    "tags": [
+      "ホスティング",
+      "フロントエンド",
+      "Git"
+    ],
+    "useCases": [
+      "フロントエンドサイトの公開",
+      "プレビュー環境を使った確認"
+    ],
+    "relatedServiceIds": [
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/pages/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/pages/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "containers",
+    "name": "Containers",
+    "iconLabel": "Cn",
+    "summaryJa": "Workersと組み合わせて、コンテナ化されたコードを実行するサービス。",
+    "descriptionJa": "Cloudflare Workersと連携するコンテナ実行環境です。コンテナを必要とする処理をWorkersのアプリケーションに組み込めます。",
+    "category": "compute",
+    "tags": [
+      "コンテナ",
+      "Workers",
+      "実行環境"
+    ],
+    "useCases": [
+      "アプリケーションの一部に既存コンテナを組み込む",
+      "コンテナ化された処理の実行"
+    ],
+    "relatedServiceIds": [
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/containers/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/containers/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "durable-objects",
+    "name": "Durable Objects",
+    "iconLabel": "DO",
+    "summaryJa": "状態と協調処理を扱う、Workers向けのサーバーレス実行基盤。",
+    "descriptionJa": "各インスタンスに一意な識別子と一貫した状態を持たせ、複数のクライアントが共有する処理やリアルタイムアプリケーションを構築できます。",
+    "category": "compute",
+    "tags": [
+      "状態管理",
+      "リアルタイム",
+      "Workers"
+    ],
+    "useCases": [
+      "複数ユーザーが共有する状態の管理",
+      "WebSocketを使うリアルタイム機能"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "workflows"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/durable-objects/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/durable-objects/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/durable-objects/",
+      "https://developers.cloudflare.com/durable-objects/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workflows",
+    "name": "Workflows",
+    "iconLabel": "Wf",
+    "summaryJa": "複数段階の処理を耐久性を持って実行するオーケストレーションサービス。",
+    "descriptionJa": "イベントを起点とする複数ステップの処理を、リトライや待機を含めて継続的に実行できます。",
+    "category": "compute",
+    "tags": [
+      "オーケストレーション",
+      "非同期処理",
+      "Workers"
+    ],
+    "useCases": [
+      "長時間にわたるバックグラウンド処理",
+      "複数サービスをまたぐ処理の調整"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "queues"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/workflows/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/workflows/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-for-platforms",
+    "name": "Workers for Platforms",
+    "iconLabel": "WFP",
+    "summaryJa": "利用者がコードをデプロイできるマルチテナント型のプラットフォームを構築するサービス。",
+    "descriptionJa": "独自プラットフォームにWorkersの実行環境を組み込み、テナントや利用者ごとのコード実行を提供できます。",
+    "category": "compute",
+    "tags": [
+      "マルチテナント",
+      "Workers",
+      "プラットフォーム"
+    ],
+    "useCases": [
+      "ユーザーコードを実行する開発者向け基盤",
+      "マルチテナントのエッジ実行環境"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "cloudflare-for-saas"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/",
+      "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "browser-run",
+    "name": "Browser Run",
+    "iconLabel": "Br",
+    "summaryJa": "Cloudflare上のヘッドレスブラウザーをプログラムから操作するサービス。",
+    "descriptionJa": "ヘッドレスブラウザーの起動やページ操作をAPIから行い、ブラウザーを使う自動処理を構築できます。",
+    "category": "compute",
+    "tags": [
+      "ヘッドレスブラウザー",
+      "自動化",
+      "Workers"
+    ],
+    "useCases": [
+      "Webページの取得・操作の自動化",
+      "ブラウザーを使うAIエージェントの実行"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "agents"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/browser-rendering/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/browser-rendering/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-observability",
+    "name": "Workers Observability",
+    "iconLabel": "Obs",
+    "summaryJa": "Workersのログや実行状況を調査するための監視機能。",
+    "descriptionJa": "Workersのログ、メトリクス、トレースなどを使って、実行時の問題や処理状況を調査できます。",
+    "category": "compute",
+    "tags": [
+      "ログ",
+      "監視",
+      "Workers"
+    ],
+    "useCases": [
+      "Workersアプリケーションの障害調査",
+      "本番環境での処理状況の確認"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "workflows"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/workers/observability/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/workers/observability/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "d1",
+    "name": "D1",
+    "iconLabel": "D1",
+    "summaryJa": "Workersアプリケーション向けのサーバーレスSQLデータベース。",
+    "descriptionJa": "SQLite互換のSQLデータベースをCloudflare上で管理し、Workersからバインディングを通じて利用できます。",
+    "category": "storage",
+    "tags": [
+      "SQL",
+      "SQLite",
+      "データベース"
+    ],
+    "useCases": [
+      "Workersアプリケーションのリレーショナルデータ管理",
+      "小〜中規模のアプリケーションデータ保存"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "hyperdrive",
+      "vectorize"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/d1/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/d1/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/d1/",
+      "https://developers.cloudflare.com/d1/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": 3,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "r2",
+    "name": "R2",
+    "iconLabel": "R2",
+    "summaryJa": "画像やファイルなどを保存するオブジェクトストレージ。",
+    "descriptionJa": "S3互換APIで操作できるオブジェクトストレージです。Cloudflareのネットワークを使って、ファイルや非構造化データを保存・配信できます。",
+    "category": "storage",
+    "tags": [
+      "オブジェクトストレージ",
+      "S3互換",
+      "ファイル"
+    ],
+    "useCases": [
+      "画像やバックアップファイルの保存",
+      "大容量ファイルの配信"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "images",
+      "stream",
+      "pipelines"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/r2/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/r2/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/r2/",
+      "https://developers.cloudflare.com/r2/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": 2,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-kv",
+    "name": "Workers KV",
+    "iconLabel": "KV",
+    "summaryJa": "Workersから利用できるグローバルなKey-Valueストレージ。",
+    "descriptionJa": "キーと値の形式でデータを保存し、Cloudflareのネットワーク上から読み取れる分散型ストレージです。",
+    "category": "storage",
+    "tags": [
+      "Key-Value",
+      "低遅延",
+      "Workers"
+    ],
+    "useCases": [
+      "設定値やセッション情報の参照",
+      "読み取り中心のグローバルデータ配信"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "durable-objects"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/kv/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/kv/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/kv/",
+      "https://developers.cloudflare.com/kv/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "queues",
+    "name": "Queues",
+    "iconLabel": "Q",
+    "summaryJa": "Workers間で非同期にメッセージを受け渡すキューサービス。",
+    "descriptionJa": "メッセージを一時的に保持して送信側と処理側を分離し、バックグラウンド処理を構築できます。",
+    "category": "storage",
+    "tags": [
+      "メッセージキュー",
+      "非同期処理",
+      "Workers"
+    ],
+    "useCases": [
+      "リクエスト後のバックグラウンド処理",
+      "処理を分散して負荷を平準化"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "workflows"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/queues/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/queues/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/queues/",
+      "https://developers.cloudflare.com/queues/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "hyperdrive",
+    "name": "Hyperdrive",
+    "iconLabel": "Hy",
+    "summaryJa": "既存のPostgreSQLやMySQLデータベースへWorkersから接続するサービス。",
+    "descriptionJa": "データベース接続をプールし、Cloudflareネットワークから既存データベースへの接続を効率化します。",
+    "category": "storage",
+    "tags": [
+      "PostgreSQL",
+      "MySQL",
+      "データベース接続"
+    ],
+    "useCases": [
+      "Workersから既存データベースへの接続",
+      "グローバルアプリケーションの接続管理"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "d1"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/hyperdrive/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/hyperdrive/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "pipelines",
+    "name": "Basin Pipelines",
+    "iconLabel": "Pi",
+    "summaryJa": "Basinのデータ取り込み機能。イベントを取り込み、SQLで変換してR2へ書き出します。",
+    "descriptionJa": "Basinを構成するデータ取り込みサービスです。HTTPやWorkersからストリーミングイベントを受け取り、SQLで変換してR2上のIcebergテーブルなどへ書き出します。Basin全体のカタログ管理やSQL分析を担う親プラットフォームとは区別されます。",
+    "category": "storage",
+    "tags": [
+      "データ取り込み",
+      "ストリーミング",
+      "R2"
+    ],
+    "useCases": [
+      "ログやイベントデータの取り込み",
+      "分析用データの保存先への転送"
+    ],
+    "relatedServiceIds": [
+      "basin",
+      "r2",
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/basin-pipelines/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/basin-pipelines/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/basin-pipelines/",
+      "https://developers.cloudflare.com/basin/",
+      "https://developers.cloudflare.com/basin-pipelines/platform/pricing/"
+    ],
+    "releaseStatus": "一般提供",
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "basin",
+    "name": "Basin",
+    "iconLabel": "Ba",
+    "summaryJa": "Basin Pipelines・Basin Catalog・Basin SQLをまとめる、R2上の分析データ基盤。",
+    "descriptionJa": "BasinはCloudflareの分析データ基盤です。データ取り込みを担うBasin Pipelines、データを管理するBasin Catalog、分散SQLを提供するBasin SQLをまとめます。この項目はプラットフォーム全体を表し、個別の取り込み機能はBasin Pipelinesとして掲載しています。",
+    "category": "storage",
+    "tags": [
+      "データ取り込み",
+      "カタログ",
+      "クエリ"
+    ],
+    "useCases": [
+      "データレイクの構築",
+      "取り込んだデータの整理と検索"
+    ],
+    "relatedServiceIds": [
+      "pipelines",
+      "r2",
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/basin/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/basin/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/basin/",
+      "https://developers.cloudflare.com/basin-pipelines/",
+      "https://developers.cloudflare.com/basin/platform/pricing/"
+    ],
+    "releaseStatus": "一般提供",
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cache-reserve",
+    "name": "Cache Reserve",
+    "iconLabel": "CR",
+    "summaryJa": "CDNキャッシュを永続ストレージへ拡張するサービス。",
+    "descriptionJa": "Cloudflareのキャッシュに永続性を加え、キャッシュミス時のオリジンへの再取得を減らすために使えます。",
+    "category": "storage",
+    "tags": [
+      "キャッシュ",
+      "CDN",
+      "オリジン負荷"
+    ],
+    "useCases": [
+      "静的コンテンツのキャッシュ保持",
+      "オリジンサーバーへの再取得を抑える"
+    ],
+    "relatedServiceIds": [
+      "cdn-cache",
+      "r2"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "secrets-store",
+    "name": "Secrets Store",
+    "iconLabel": "SS",
+    "summaryJa": "アカウント内で再利用する機密値を暗号化して保管するサービス。",
+    "descriptionJa": "機密情報をCloudflareアカウントに保存し、対応するCloudflareサービスから利用するための保管機能です。",
+    "category": "storage",
+    "tags": [
+      "シークレット",
+      "暗号化",
+      "アカウント管理"
+    ],
+    "useCases": [
+      "サービス間で利用する機密情報の管理",
+      "認証情報の集中保管"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "access"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/secrets-store/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/secrets-store/"
+    ],
+    "releaseStatus": "Open beta",
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "artifacts",
+    "name": "Artifacts",
+    "iconLabel": "Ar",
+    "summaryJa": "Gitと連携するバージョン管理型のストレージサービス。",
+    "descriptionJa": "Gitのワークフローを使ってバージョン管理できるストレージです。提供内容や料金の詳細は公式情報で確認してください。",
+    "category": "storage",
+    "tags": [
+      "Git",
+      "バージョン管理",
+      "ストレージ"
+    ],
+    "useCases": [
+      "Gitリポジトリと連動する成果物の保存",
+      "履歴を追跡できるデータ管理"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "r2"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/artifacts/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/artifacts/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-ai",
+    "name": "Workers AI",
+    "iconLabel": "AI",
+    "summaryJa": "Cloudflareネットワーク上でAIモデルの推論を実行するサービス。",
+    "descriptionJa": "Cloudflareのグローバルネットワーク上で公開モデルを実行し、Workersなどのアプリケーションから推論機能を利用できます。",
+    "category": "ai",
+    "tags": [
+      "推論",
+      "AIモデル",
+      "Workers"
+    ],
+    "useCases": [
+      "アプリケーションへの生成AI機能追加",
+      "モデル推論APIの構築"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "ai-gateway",
+      "vectorize"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/workers-ai/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/workers-ai/",
+      "https://developers.cloudflare.com/workers-ai/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": 4,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ai-gateway",
+    "name": "AI Gateway",
+    "iconLabel": "GW",
+    "summaryJa": "AIアプリケーションのリクエストを観測・管理するゲートウェイ。",
+    "descriptionJa": "AIプロバイダーへのリクエストを記録・分析し、キャッシュや制御を加えるためのゲートウェイです。",
+    "category": "ai",
+    "tags": [
+      "LLM",
+      "監視",
+      "ゲートウェイ"
+    ],
+    "useCases": [
+      "AI APIの利用状況の把握",
+      "AIプロバイダーへのリクエスト管理"
+    ],
+    "relatedServiceIds": [
+      "workers-ai",
+      "workers",
+      "ai-search"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/ai-gateway/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/ai-gateway/reference/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/ai-gateway/",
+      "https://developers.cloudflare.com/ai-gateway/reference/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ai-search",
+    "name": "AI Search",
+    "iconLabel": "AS",
+    "summaryJa": "AIアプリケーション向けの検索・RAGパイプラインを構築するサービス。",
+    "descriptionJa": "データを取り込んで検索可能にし、AIアプリケーションで利用するRAGパイプラインを構築できます。",
+    "category": "ai",
+    "tags": [
+      "RAG",
+      "検索",
+      "AI"
+    ],
+    "useCases": [
+      "社内データを使った回答検索",
+      "AIアプリケーション向けの検索機能"
+    ],
+    "relatedServiceIds": [
+      "vectorize",
+      "r2",
+      "workers-ai"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/ai-search/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/ai-search/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ai-crawl-control",
+    "name": "AI Crawl Control",
+    "iconLabel": "CC",
+    "summaryJa": "AIクローラーのアクセスを分析し、制御するサービス。",
+    "descriptionJa": "Webサイトを巡回するAIクローラーを分析し、サイト運営者がアクセスを制御するための機能です。",
+    "category": "ai",
+    "tags": [
+      "AIクローラー",
+      "アクセス制御",
+      "Webサイト"
+    ],
+    "useCases": [
+      "AIクローラーの巡回状況の把握",
+      "サイトへのクローラーアクセス管理"
+    ],
+    "relatedServiceIds": [
+      "bots",
+      "waf"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/ai-crawl-control/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/ai-crawl-control/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "agents",
+    "name": "Agents",
+    "iconLabel": "Ag",
+    "summaryJa": "状態を保持し、ツールを使って動作するAIエージェントを構築する基盤。",
+    "descriptionJa": "Cloudflare Agents SDKを使い、状態の保存、ブラウザー操作、リアルタイム通信などを行うエージェントを構築できます。",
+    "category": "ai",
+    "tags": [
+      "AIエージェント",
+      "状態管理",
+      "SDK"
+    ],
+    "useCases": [
+      "長時間動作するエージェントの構築",
+      "ブラウザーや外部ツールを使うAI処理"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "durable-objects",
+      "workers-ai",
+      "browser-run"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/agents/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/agents/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "vectorize",
+    "name": "Vectorize",
+    "iconLabel": "Vx",
+    "summaryJa": "ベクトル埋め込みを保存・検索するマネージドベクトルデータベース。",
+    "descriptionJa": "ベクトルデータを保存し、類似検索を行うためのデータベースです。AI検索やRAGの構成要素として利用できます。",
+    "category": "ai",
+    "tags": [
+      "ベクトル検索",
+      "埋め込み",
+      "データベース"
+    ],
+    "useCases": [
+      "類似コンテンツの検索",
+      "RAG用のベクトルデータ保存"
+    ],
+    "relatedServiceIds": [
+      "workers-ai",
+      "d1",
+      "ai-search"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/vectorize/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/vectorize/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "waf",
+    "name": "Web Application Firewall (WAF)",
+    "iconLabel": "WAF",
+    "summaryJa": "WebアプリケーションへのHTTPリクエストを検査し、攻撃を防ぐサービス。",
+    "descriptionJa": "マネージドルールやカスタムルールを使い、Webアプリケーションへの不正なHTTPリクエストを検知・遮断します。",
+    "category": "security",
+    "tags": [
+      "Webセキュリティ",
+      "ルール",
+      "HTTP"
+    ],
+    "useCases": [
+      "Webアプリへの攻撃対策",
+      "受信トラフィックの検査"
+    ],
+    "relatedServiceIds": [
+      "ddos-protection",
+      "bots",
+      "api-shield",
+      "turnstile",
+      "page-shield"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/waf/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/waf/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ddos-protection",
+    "name": "DDoS Protection",
+    "iconLabel": "DDoS",
+    "summaryJa": "分散型サービス妨害攻撃からWebサイトやネットワークを保護するサービス。",
+    "descriptionJa": "CloudflareネットワークでDDoS攻撃を検知・緩和し、Webサイトやネットワークの可用性を守ります。",
+    "category": "security",
+    "tags": [
+      "DDoS",
+      "可用性",
+      "自動緩和"
+    ],
+    "useCases": [
+      "Webサイトの可用性保護",
+      "ネットワークへの大量トラフィック対策"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "magic-transit",
+      "spectrum"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/ddos-protection/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/ddos-protection/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "bots",
+    "name": "Bots",
+    "iconLabel": "Bot",
+    "summaryJa": "自動化されたボットトラフィックを検知・制御するサービス。",
+    "descriptionJa": "Webサイトやアプリケーションへのボットトラフィックを分析し、不要な自動アクセスへの対策を支援します。",
+    "category": "security",
+    "tags": [
+      "ボット対策",
+      "不正アクセス",
+      "Webアプリ"
+    ],
+    "useCases": [
+      "スクレイピングへの対策",
+      "不正な自動アクセスの制御"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "turnstile",
+      "ai-crawl-control"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/bots/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/bots/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "api-shield",
+    "name": "API Shield",
+    "iconLabel": "API",
+    "summaryJa": "APIの脆弱性や不正なリクエストを検出するセキュリティサービス。",
+    "descriptionJa": "APIトラフィックを可視化し、スキーマ検証などを通じてAPIの脆弱性や不正利用への対策を支援します。",
+    "category": "security",
+    "tags": [
+      "APIセキュリティ",
+      "スキーマ検証",
+      "API"
+    ],
+    "useCases": [
+      "APIエンドポイントの保護",
+      "APIリクエストの検証"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "turnstile",
+      "cloudflare-for-saas"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/api-shield/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/api-shield/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "turnstile",
+    "name": "Turnstile",
+    "iconLabel": "T",
+    "summaryJa": "訪問者が人間かどうかを確認するCloudflareのチャレンジサービス。",
+    "descriptionJa": "フォームやログインなどに組み込み、利用者の操作を妨げにくい方法で自動化されたアクセスを判定します。",
+    "category": "security",
+    "tags": [
+      "ボット対策",
+      "フォーム",
+      "チャレンジ"
+    ],
+    "useCases": [
+      "フォームへの自動投稿対策",
+      "ログイン画面の保護"
+    ],
+    "relatedServiceIds": [
+      "bots",
+      "waf",
+      "pages"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/turnstile/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/turnstile/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "page-shield",
+    "name": "Page Shield",
+    "iconLabel": "PS",
+    "summaryJa": "ブラウザー上で実行されるスクリプトを監視するクライアント側セキュリティ機能。",
+    "descriptionJa": "Webページに読み込まれるJavaScriptの変更や挙動を監視し、サードパーティースクリプトに関するリスクの把握を支援します。",
+    "category": "security",
+    "tags": [
+      "クライアント側保護",
+      "JavaScript",
+      "監視"
+    ],
+    "useCases": [
+      "サードパーティースクリプトの監視",
+      "Webページのサプライチェーン対策"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "security-center"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/page-shield/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/page-shield/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cloud-workload-security",
+    "name": "Cloud Workload Security",
+    "iconLabel": "CWS",
+    "summaryJa": "クラウドAPIリクエストを検査し、危険な変更をポリシーで防ぐセキュリティサービス。",
+    "descriptionJa": "Cloudflare OneのCloud Workload Security（CWS）は、CloudflareやAWSなどへのAPIリクエストをプロキシ経由で検査し、ワークロードとRegoポリシーに基づいて危険な操作を制御します。Zero Trust契約が必要で、Freeプランでも利用できます。現在はBeta提供です。",
+    "category": "security",
+    "tags": [
+      "クラウドセキュリティ",
+      "API制御",
+      "Zero Trust"
+    ],
+    "useCases": [
+      "クラウド環境への危険な変更を防止",
+      "APIリクエストに対する組織ポリシーの適用"
+    ],
+    "relatedServiceIds": [],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/",
+      "https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/platform/",
+      "https://developers.cloudflare.com/changelog/post/2026-10-19-cloud-workload-security-beta/"
+    ],
+    "releaseStatus": "Beta",
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "security-center",
+    "name": "Security Center",
+    "iconLabel": "SC",
+    "summaryJa": "Cloudflareアカウントのセキュリティ状況を把握するための管理画面。",
+    "descriptionJa": "複数のセキュリティ設定や推奨事項を確認し、Cloudflare上のセキュリティ態勢を管理できます。",
+    "category": "security",
+    "tags": [
+      "セキュリティ態勢",
+      "管理",
+      "アカウント"
+    ],
+    "useCases": [
+      "設定状況の確認",
+      "セキュリティ上の改善点の把握"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "ddos-protection",
+      "api-shield"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/security-center/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/security-center/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "leaked-credentials",
+    "name": "Leaked Credentials Detection",
+    "iconLabel": "LC",
+    "summaryJa": "漏えいした認証情報が使われるリクエストを検知する機能。",
+    "descriptionJa": "Cloudflareが把握する漏えい認証情報のシグナルを利用し、Webアプリケーションへの関連リクエストを検知できます。",
+    "category": "security",
+    "tags": [
+      "認証情報",
+      "漏えい検知",
+      "WAF"
+    ],
+    "useCases": [
+      "漏えいパスワードを使うログイン試行の検知",
+      "認証関連リクエストの調査"
+    ],
+    "relatedServiceIds": [
+      "waf",
+      "bots"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/waf/detections/leaked-credentials/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/waf/detections/leaked-credentials/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "dns",
+    "name": "DNS",
+    "iconLabel": "DNS",
+    "summaryJa": "Cloudflareの権威DNSでドメインのDNSレコードを管理するサービス。",
+    "descriptionJa": "Cloudflareのネットワーク上でDNSレコードを管理し、名前解決の信頼性と応答性能を提供します。",
+    "category": "network",
+    "tags": [
+      "権威DNS",
+      "ドメイン",
+      "名前解決"
+    ],
+    "useCases": [
+      "ドメインのDNSレコード管理",
+      "DNSの可用性向上"
+    ],
+    "relatedServiceIds": [
+      "registrar",
+      "cdn-cache",
+      "ssl-tls"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/dns/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/dns/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "load-balancing",
+    "name": "Load Balancing",
+    "iconLabel": "LB",
+    "summaryJa": "複数のオリジンへトラフィックを振り分ける負荷分散サービス。",
+    "descriptionJa": "ヘルスチェックとルールに基づいてトラフィックを振り分け、アプリケーションの可用性と応答性を高めます。",
+    "category": "network",
+    "tags": [
+      "負荷分散",
+      "ヘルスチェック",
+      "可用性"
+    ],
+    "useCases": [
+      "複数オリジン間のトラフィック分散",
+      "障害時の切り替え"
+    ],
+    "relatedServiceIds": [
+      "argo-smart-routing",
+      "dns",
+      "waiting-room"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/load-balancing/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/load-balancing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "argo-smart-routing",
+    "name": "Argo Smart Routing",
+    "iconLabel": "Ar",
+    "summaryJa": "Cloudflareネットワーク内で高速な経路を選ぶトラフィック最適化サービス。",
+    "descriptionJa": "インターネット上の混雑状況を考慮して経路を選択し、オリジンまでの通信を最適化します。",
+    "category": "network",
+    "tags": [
+      "経路最適化",
+      "遅延低減",
+      "ネットワーク"
+    ],
+    "useCases": [
+      "Webサイトの応答時間改善",
+      "オリジンまでの通信経路の最適化"
+    ],
+    "relatedServiceIds": [
+      "load-balancing",
+      "cdn-cache"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/argo-smart-routing/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/argo-smart-routing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "magic-transit",
+    "name": "Magic Transit",
+    "iconLabel": "MT",
+    "summaryJa": "Cloudflareのネットワークを使ってオンプレミスやクラウドのIPネットワークを保護するサービス。",
+    "descriptionJa": "Cloudflareのネットワークを通じて企業ネットワークのトラフィックを保護し、DDoS対策やネットワーク制御を提供します。",
+    "category": "network",
+    "tags": [
+      "ネットワーク保護",
+      "DDoS",
+      "IPネットワーク"
+    ],
+    "useCases": [
+      "企業ネットワークのDDoS対策",
+      "クラウド・オンプレミスのトラフィック保護"
+    ],
+    "relatedServiceIds": [
+      "magic-wan",
+      "magic-firewall",
+      "ddos-protection"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/magic-transit/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/magic-transit/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "magic-wan",
+    "name": "Magic WAN",
+    "iconLabel": "MW",
+    "summaryJa": "拠点やクラウドをCloudflareのグローバルネットワークへ接続するWANサービス。",
+    "descriptionJa": "拠点、データセンター、クラウドなどのトラフィックをCloudflareへ接続し、ネットワークを一元管理できます。",
+    "category": "network",
+    "tags": [
+      "WAN",
+      "拠点接続",
+      "SASE"
+    ],
+    "useCases": [
+      "複数拠点のネットワーク接続",
+      "クラウドと拠点間の通信管理"
+    ],
+    "relatedServiceIds": [
+      "magic-transit",
+      "magic-firewall",
+      "cloudflare-tunnel"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/magic-wan/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/magic-wan/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "magic-firewall",
+    "name": "Magic Firewall",
+    "iconLabel": "MF",
+    "summaryJa": "Cloudflareネットワーク上で企業トラフィックを検査するファイアウォールサービス。",
+    "descriptionJa": "ネットワークトラフィックにルールを適用し、企業ネットワークへの不要な通信を制御します。",
+    "category": "network",
+    "tags": [
+      "ネットワークファイアウォール",
+      "トラフィック制御",
+      "企業ネットワーク"
+    ],
+    "useCases": [
+      "ネットワーク境界の通信制御",
+      "WANトラフィックの検査"
+    ],
+    "relatedServiceIds": [
+      "magic-wan",
+      "magic-transit"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/magic-firewall/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/magic-firewall/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "spectrum",
+    "name": "Spectrum",
+    "iconLabel": "Sp",
+    "summaryJa": "TCPやUDPを使うアプリケーションをCloudflare経由で保護・高速化するサービス。",
+    "descriptionJa": "HTTP以外のTCPまたはUDPアプリケーションをCloudflareネットワークでプロキシし、接続性と保護を提供します。",
+    "category": "network",
+    "tags": [
+      "TCP",
+      "UDP",
+      "プロキシ"
+    ],
+    "useCases": [
+      "ゲームサーバーやSSHなどの保護",
+      "HTTP以外のアプリケーションの中継"
+    ],
+    "relatedServiceIds": [
+      "ddos-protection",
+      "magic-transit"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/spectrum/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/spectrum/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "network-interconnect",
+    "name": "Network Interconnect",
+    "iconLabel": "NI",
+    "summaryJa": "Cloudflareとネットワーク間に専用の相互接続を構成するサービス。",
+    "descriptionJa": "Cloudflareネットワークと他のネットワークを接続し、インターネットを経由しない接続経路の構築を支援します。",
+    "category": "network",
+    "tags": [
+      "相互接続",
+      "専用接続",
+      "ネットワーク"
+    ],
+    "useCases": [
+      "Cloudflareへのネットワーク接続",
+      "ネットワーク間の経路設計"
+    ],
+    "relatedServiceIds": [
+      "magic-wan",
+      "magic-transit"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/network-interconnect/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/network-interconnect/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "china-network",
+    "name": "China Network",
+    "iconLabel": "CN",
+    "summaryJa": "中国本土の利用者向けにコンテンツ配信を支援するネットワークサービス。",
+    "descriptionJa": "中国本土内外の利用者に向けたWebサイトやアプリケーションの配信を支援します。利用条件は公式情報で確認してください。",
+    "category": "network",
+    "tags": [
+      "中国本土",
+      "配信",
+      "ネットワーク"
+    ],
+    "useCases": [
+      "中国本土の利用者向けサイト配信",
+      "中国本土内外での配信構成"
+    ],
+    "relatedServiceIds": [
+      "cdn-cache",
+      "ssl-tls"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/china-network/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/china-network/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "registrar",
+    "name": "Cloudflare Registrar",
+    "iconLabel": "CR",
+    "summaryJa": "ドメインを登録・更新し、Cloudflare DNSと連携するレジストラ。",
+    "descriptionJa": "ドメインの登録や更新をCloudflareアカウントで管理できます。登録可能なTLDや条件は公式情報を確認してください。",
+    "category": "network",
+    "tags": [
+      "ドメイン",
+      "DNS",
+      "レジストラ"
+    ],
+    "useCases": [
+      "ドメインの登録・更新",
+      "Cloudflare DNSとの一元管理"
+    ],
+    "relatedServiceIds": [
+      "dns"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/registrar/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/registrar/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cloudflare-for-saas",
+    "name": "Cloudflare for SaaS",
+    "iconLabel": "SaaS",
+    "summaryJa": "SaaS事業者が顧客ドメインへCloudflareの配信・保護機能を提供するサービス。",
+    "descriptionJa": "SaaSプラットフォームが顧客独自ドメインを扱えるよう、ホスト名の検証や証明書発行などを支援します。",
+    "category": "network",
+    "tags": [
+      "SaaS",
+      "カスタムホスト名",
+      "マルチテナント"
+    ],
+    "useCases": [
+      "顧客ドメインでのサービス提供",
+      "SaaSのホスト名と証明書管理"
+    ],
+    "relatedServiceIds": [
+      "workers-for-platforms",
+      "dns",
+      "ssl-tls"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-for-saas/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-for-saas/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "waiting-room",
+    "name": "Waiting Room",
+    "iconLabel": "WR",
+    "summaryJa": "アクセス集中時に訪問者を待機させ、Webサイトへの流入を調整するサービス。",
+    "descriptionJa": "設定した条件に応じて訪問者を待機ページへ案内し、オリジンへのアクセスを平準化します。",
+    "category": "network",
+    "tags": [
+      "アクセス集中",
+      "待機室",
+      "流量制御"
+    ],
+    "useCases": [
+      "チケット販売やキャンペーンのアクセス調整",
+      "オリジンへの急増トラフィック抑制"
+    ],
+    "relatedServiceIds": [
+      "load-balancing",
+      "waf"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/waiting-room/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/waiting-room/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ssl-tls",
+    "name": "SSL/TLS",
+    "iconLabel": "TLS",
+    "summaryJa": "Webサイトの通信を暗号化し、証明書とTLS設定を管理する機能群。",
+    "descriptionJa": "Cloudflareを経由するWeb通信の暗号化と証明書設定を管理します。利用可能な機能はプランや構成により異なります。",
+    "category": "network",
+    "tags": [
+      "TLS",
+      "証明書",
+      "暗号化"
+    ],
+    "useCases": [
+      "WebサイトのHTTPS化",
+      "証明書やTLS設定の管理"
+    ],
+    "relatedServiceIds": [
+      "dns",
+      "cdn-cache",
+      "cloudflare-for-saas"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/ssl/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/ssl/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cdn-cache",
+    "name": "CDN / Cache",
+    "iconLabel": "CDN",
+    "summaryJa": "CloudflareのエッジネットワークからWebコンテンツを配信・キャッシュするサービス。",
+    "descriptionJa": "Cloudflareのネットワークでコンテンツをキャッシュして利用者へ配信し、オリジンへの通信を減らします。",
+    "category": "network",
+    "tags": [
+      "CDN",
+      "キャッシュ",
+      "配信"
+    ],
+    "useCases": [
+      "画像や静的コンテンツの高速配信",
+      "オリジン負荷の軽減"
+    ],
+    "relatedServiceIds": [
+      "cache-reserve",
+      "argo-smart-routing",
+      "images",
+      "stream"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cache/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cache/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "access",
+    "name": "Cloudflare Access",
+    "iconLabel": "Ac",
+    "summaryJa": "ユーザーや端末に基づいて社内アプリへのアクセスを制御するサービス。",
+    "descriptionJa": "アプリケーションごとのポリシーを設定し、ユーザーのIDや端末情報に基づいてアクセスを許可または拒否できます。",
+    "category": "zero-trust",
+    "tags": [
+      "Zero Trust",
+      "ID認証",
+      "アプリケーション"
+    ],
+    "useCases": [
+      "社内Webアプリへのアクセス制御",
+      "VPNを使わないリモートアクセス"
+    ],
+    "relatedServiceIds": [
+      "gateway",
+      "cloudflare-tunnel",
+      "warp-client"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/applications/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/applications/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": 5,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "gateway",
+    "name": "Cloudflare Gateway",
+    "iconLabel": "Gw",
+    "summaryJa": "DNS・HTTP・ネットワーク通信にポリシーを適用するセキュアWebゲートウェイ。",
+    "descriptionJa": "DNS、ネットワーク、HTTPトラフィックにポリシーを適用し、組織の通信を検査・制御します。",
+    "category": "zero-trust",
+    "tags": [
+      "Zero Trust",
+      "DNSフィルタリング",
+      "Webゲートウェイ"
+    ],
+    "useCases": [
+      "利用者のWebアクセス制御",
+      "組織内トラフィックの検査"
+    ],
+    "relatedServiceIds": [
+      "access",
+      "data-loss-prevention",
+      "digital-experience-monitoring"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cloudflare-tunnel",
+    "name": "Cloudflare Tunnel",
+    "iconLabel": "Tn",
+    "summaryJa": "公開IPアドレスを割り当てずに、非公開リソースをCloudflareへ接続するサービス。",
+    "descriptionJa": "リソースからCloudflareへのアウトバウンド接続を使い、公開IPを用意せずにアプリケーションやネットワークへ接続できます。",
+    "category": "zero-trust",
+    "tags": [
+      "トンネル",
+      "非公開ネットワーク",
+      "Zero Trust"
+    ],
+    "useCases": [
+      "社内アプリケーションの公開",
+      "非公開ネットワークへの接続"
+    ],
+    "relatedServiceIds": [
+      "access",
+      "gateway",
+      "warp-client"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "browser-isolation",
+    "name": "Browser Isolation",
+    "iconLabel": "BI",
+    "summaryJa": "Webページの実行をリモート環境へ分離するセキュリティサービス。",
+    "descriptionJa": "ブラウザーで実行されるページコンテンツをユーザー端末から分離し、危険なWebコンテンツへの対策を支援します。",
+    "category": "zero-trust",
+    "tags": [
+      "ブラウザー分離",
+      "Webセキュリティ",
+      "Zero Trust"
+    ],
+    "useCases": [
+      "利用者のWeb閲覧保護",
+      "未知のWebコンテンツの隔離"
+    ],
+    "relatedServiceIds": [
+      "gateway",
+      "access"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "casb",
+    "name": "Cloud Access Security Broker (CASB)",
+    "iconLabel": "CB",
+    "summaryJa": "SaaSアプリケーションやクラウド環境の設定・データリスクを検出するサービス。",
+    "descriptionJa": "接続したSaaSアプリケーションやクラウド環境をスキャンし、セキュリティ上の設定やデータに関する問題を把握できます。",
+    "category": "zero-trust",
+    "tags": [
+      "CASB",
+      "SaaS",
+      "クラウドセキュリティ"
+    ],
+    "useCases": [
+      "SaaSアプリの設定状況の確認",
+      "クラウド環境のセキュリティ調査"
+    ],
+    "relatedServiceIds": [
+      "data-loss-prevention",
+      "gateway"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "data-loss-prevention",
+    "name": "Data Loss Prevention (DLP)",
+    "iconLabel": "DLP",
+    "summaryJa": "通信やSaaS上の機密データを検出・保護するサービス。",
+    "descriptionJa": "WebトラフィックやSaaSアプリケーションを検査し、組織のポリシーに基づいて機密データを検出・制御できます。",
+    "category": "zero-trust",
+    "tags": [
+      "DLP",
+      "機密データ",
+      "情報漏えい対策"
+    ],
+    "useCases": [
+      "機密データを含む通信の検出",
+      "SaaS上のデータ保護"
+    ],
+    "relatedServiceIds": [
+      "gateway",
+      "casb"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "digital-experience-monitoring",
+    "name": "Digital Experience Monitoring",
+    "iconLabel": "DX",
+    "summaryJa": "端末・ネットワーク・アプリケーションの利用状況を監視するサービス。",
+    "descriptionJa": "組織内の端末、ネットワーク、アプリケーションの状態やユーザー体験を可視化し、問題の調査に使えます。",
+    "category": "zero-trust",
+    "tags": [
+      "DEX",
+      "端末監視",
+      "ネットワーク"
+    ],
+    "useCases": [
+      "ユーザー環境の問題調査",
+      "アプリケーション接続の状態把握"
+    ],
+    "relatedServiceIds": [
+      "gateway",
+      "warp-client"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/insights/dex/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/insights/dex/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "warp-client",
+    "name": "Cloudflare One Client (WARP)",
+    "iconLabel": "W",
+    "summaryJa": "ユーザー端末をCloudflareのZero Trust組織へ接続するクライアント。",
+    "descriptionJa": "端末からCloudflare Oneへ接続し、組織のアクセスポリシーやネットワーク制御を適用するために利用します。",
+    "category": "zero-trust",
+    "tags": [
+      "WARP",
+      "端末接続",
+      "Zero Trust"
+    ],
+    "useCases": [
+      "リモート端末の組織ネットワーク接続",
+      "端末に基づくアクセスポリシー適用"
+    ],
+    "relatedServiceIds": [
+      "access",
+      "gateway",
+      "cloudflare-tunnel"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "images",
+    "name": "Cloudflare Images",
+    "iconLabel": "Im",
+    "summaryJa": "画像の保存、変換、最適化、配信をまとめて扱うサービス。",
+    "descriptionJa": "画像をCloudflare上に保存し、リサイズや変換を行ってWebサイトやアプリケーションへ配信できます。",
+    "category": "media",
+    "tags": [
+      "画像",
+      "変換",
+      "配信"
+    ],
+    "useCases": [
+      "商品画像やユーザー画像の管理",
+      "画像サイズの最適化と配信"
+    ],
+    "relatedServiceIds": [
+      "r2",
+      "cdn-cache",
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/images/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/images/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/images/",
+      "https://developers.cloudflare.com/images/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "stream",
+    "name": "Cloudflare Stream",
+    "iconLabel": "St",
+    "summaryJa": "動画の保存、エンコード、配信、再生をまとめて扱うサービス。",
+    "descriptionJa": "動画をアップロードし、エンコードから配信、プレーヤーでの再生までをCloudflare上で扱えます。",
+    "category": "media",
+    "tags": [
+      "動画",
+      "エンコード",
+      "ストリーミング"
+    ],
+    "useCases": [
+      "会員向け動画の配信",
+      "Webサイトへの動画再生機能追加"
+    ],
+    "relatedServiceIds": [
+      "r2",
+      "cdn-cache",
+      "workers"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/stream/",
+    "productUrl": null,
+    "pricingUrl": "https://developers.cloudflare.com/stream/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/stream/",
+      "https://developers.cloudflare.com/stream/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "realtime",
+    "name": "Cloudflare Realtime",
+    "iconLabel": "RT",
+    "summaryJa": "低遅延の音声・映像・データ通信を構築するためのリアルタイム基盤。",
+    "descriptionJa": "RealtimeKit SDKやSFU、TURNなどの機能を使い、リアルタイムの音声・映像・データアプリケーションを構築できます。",
+    "category": "media",
+    "tags": [
+      "WebRTC",
+      "SFU",
+      "TURN"
+    ],
+    "useCases": [
+      "ビデオ通話やライブ配信の構築",
+      "リアルタイム音声・映像アプリケーション"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "durable-objects"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/realtime/",
+    "productUrl": null,
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/realtime/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-20"
+  }
+]

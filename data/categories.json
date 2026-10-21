@@ -1,0 +1,51 @@
+[
+  {
+    "id": "compute",
+    "name": "Compute",
+    "summaryJa": "エッジで実行するコンピューティング",
+    "icon": "compute",
+    "order": 1
+  },
+  {
+    "id": "storage",
+    "name": "Storage",
+    "summaryJa": "データの保存と処理",
+    "icon": "storage",
+    "order": 2
+  },
+  {
+    "id": "ai",
+    "name": "AI",
+    "summaryJa": "AI開発と推論のためのサービス",
+    "icon": "ai",
+    "order": 3
+  },
+  {
+    "id": "security",
+    "name": "Security",
+    "summaryJa": "アプリケーションとインフラの保護",
+    "icon": "security",
+    "order": 4
+  },
+  {
+    "id": "network",
+    "name": "Network",
+    "summaryJa": "グローバルなネットワーク基盤",
+    "icon": "network",
+    "order": 5
+  },
+  {
+    "id": "media",
+    "name": "Media",
+    "summaryJa": "動画・画像・リアルタイム配信",
+    "icon": "media",
+    "order": 6
+  },
+  {
+    "id": "zero-trust",
+    "name": "Zero Trust",
+    "summaryJa": "安全なアクセスと業務環境の実現",
+    "icon": "zero-trust",
+    "order": 7
+  }
+]

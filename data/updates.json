@@ -1,0 +1,183 @@
+[
+  {
+    "id": "warp-windows-client-2026-10-20",
+    "publishedAt": "2026-10-20",
+    "titleJa": "Cloudflare One Client for Windows v2026.8.2115.0",
+    "summaryJa": "Windows版クライアントが更新され、信頼済み証明書チェーンに関する問題が修正されました。",
+    "serviceIds": [
+      "warp-client"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-20-warp-windows-ga/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "warp-macos-client-2026-10-20",
+    "publishedAt": "2026-10-20",
+    "titleJa": "Cloudflare One Client for macOS v2026.8.2115.0",
+    "summaryJa": "macOS版クライアントが更新され、信頼済み証明書チェーンに関する問題が修正されました。",
+    "serviceIds": [
+      "warp-client"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-20-warp-macos-ga/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "warp-linux-client-2026-10-20",
+    "publishedAt": "2026-10-20",
+    "titleJa": "Cloudflare One Client for Linux v2026.8.2115.0",
+    "summaryJa": "Linux版クライアントが更新され、信頼済み証明書チェーンに関する問題が修正されました。",
+    "serviceIds": [
+      "warp-client"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-20-warp-linux-ga/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "agents-mcp-step-up-2026-10-19",
+    "publishedAt": "2026-10-19",
+    "titleJa": "Cloudflare API MCPサーバーがStep-up認可に対応",
+    "summaryJa": "Step-up認可に対応するMCPクライアントは、追加操作の直前に必要な権限を要求できるようになりました。",
+    "serviceIds": [
+      "agents"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-19-cloudflare-mcp-step-up/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "bots-precursor-monitor-mode-2026-10-19",
+    "publishedAt": "2026-10-19",
+    "titleJa": "PrecursorにMonitorモードを追加",
+    "summaryJa": "Bots向けPrecursorでMonitorモードを使い、ボットスコアやChallenge判定を変更せずに検知結果を確認できるようになりました。",
+    "serviceIds": [
+      "bots"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-19-precursor-monitor-mode/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "cloud-workload-security-beta-20261019",
+    "publishedAt": "2026-10-19",
+    "titleJa": "Cloud Workload SecurityがBetaで利用可能に",
+    "summaryJa": "クラウドAPIリクエストをプロキシ経由で検査し、ポリシーで危険な操作を防ぐCloud Workload SecurityがBetaになりました。Zero Trust Freeプランでも利用できます。",
+    "serviceIds": [
+      "cloud-workload-security"
+    ],
+    "type": "new-service",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-19-cloud-workload-security-beta/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-ai-clairic-preview-2026-10-19",
+    "publishedAt": "2026-10-19",
+    "titleJa": "Workers AIに構造化抽出モデルClairic（Preview）を追加",
+    "summaryJa": "Clairicを使って、非構造化入力から型付きの値を抽出できます。記事でPreviewとして案内されている機能です。",
+    "serviceIds": [
+      "workers-ai"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-ai-deepseek-v41-flash-2026-10-19",
+    "publishedAt": "2026-10-19",
+    "titleJa": "DeepSeek V4.1 Flash 1017がWorkers AIで利用可能に",
+    "summaryJa": "Workers AIでDeepSeek V4.1 Flash 1017モデルが利用できるようになりました。",
+    "serviceIds": [
+      "workers-ai"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-19-deepseek-v4.1-flash-workers-ai/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-cron-local-explorer-2026-10-17",
+    "publishedAt": "2026-10-17",
+    "titleJa": "Local ExplorerでCron Triggersをテスト可能に",
+    "summaryJa": "ローカルのLocal ExplorerからCron Triggersを実行し、scheduled()ハンドラーをテストできるようになりました。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-17-local-explorer-cron-triggers/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "ai-search-cjk-keyword-search-2026-10-16",
+    "publishedAt": "2026-10-16",
+    "titleJa": "AI Searchのキーワード検索が日本語・中国語・韓国語に対応",
+    "summaryJa": "trigramを使ったキーワード検索で、日本語・中国語・韓国語のコンテンツを検索できるようになりました。",
+    "serviceIds": [
+      "ai-search"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-16-cjk-keyword-search/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "tunnels-platforms-50000-routes-2026-10-16",
+    "publishedAt": "2026-10-16",
+    "titleJa": "アカウントあたりのルート上限を5万件に拡大、Tunnels for Platformsを提供",
+    "summaryJa": "アカウントあたりのルート上限が5万件になり、プラットフォームが顧客環境へトンネル接続するTunnels for Platformsが追加されました。",
+    "serviceIds": [
+      "cloudflare-tunnel"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-16-tunnels-for-platforms-and-50k-routes/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "gateway-workers-public-beta-20261015",
+    "publishedAt": "2026-10-15",
+    "titleJa": "GatewayとWorkersの連携がパブリックベータに",
+    "summaryJa": "Cloudflare GatewayのHTTPポリシーからWorkersへ通信を転送する連携が、Zero Trustの全プランでパブリックベータとして提供されました。転送先のWorkerでリクエストやレスポンスを処理できます。",
+    "serviceIds": [
+      "gateway",
+      "workers"
+    ],
+    "type": "public-beta",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-15-gateway-workers-public-beta/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-build-tooling-20261014",
+    "publishedAt": "2026-10-14",
+    "titleJa": "Workers Buildsの既定ツールチェーンを更新",
+    "summaryJa": "Workers Buildsの既定ツールチェーンが更新され、Node.js、Python、Ruby、Go、Bunなどの新しいバージョンが適用されました。環境変数やバージョンファイルによる指定がある場合は、その指定が優先されます。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-byoip-context-20261013",
+    "publishedAt": "2026-10-13",
+    "titleJa": "BYOIP宛てのサブリクエストでWorkersコンテキストを維持",
+    "summaryJa": "CloudflareがプロキシするBYOIPホスト宛てのWorkersサブリクエストで、CF-Workerヘッダーとcf.worker.upstream_zoneが維持されるようになりました。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/",
+    "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "workers-runtime-grace-period-20261012",
+    "publishedAt": "2026-10-12",
+    "titleJa": "Workersのランタイム更新で処理継続の猶予が最大20分に",
+    "summaryJa": "Workersランタイム更新中、既存リクエストと接続の終了を待つ猶予が最大20分になりました。WebSocketを含め、猶予前に接続が切れる場合もあると案内されています。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-12-longer-runtime-update-grace-period/",
+    "verifiedAt": "2026-10-20"
+  }
+]
