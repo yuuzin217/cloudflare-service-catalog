@@ -2888,6 +2888,150 @@ body[data-theme="dark"] .updates-section {
   }
 }
 
+/* Phase 1: keep search feedback adjacent to the search field. */
+.search-result-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 9px;
+  color: #244369;
+  font-size: 13px;
+  font-weight: 620;
+}
+
+.search-result-hint button {
+  min-height: 44px;
+  padding: 5px 14px;
+  border: 1px solid #bcd5f1;
+  border-radius: 999px;
+  background: #fff;
+  color: #1358ab;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-result-hint button:hover {
+  border-color: #2877d4;
+  background: #edf5ff;
+}
+
+.keyword-list button,
+.text-button,
+.catalog-controls select,
+.view-button,
+.doc-link,
+.detail-link {
+  min-height: 44px;
+}
+
+.keyword-list button {
+  padding-inline: 12px;
+  font-size: 12px;
+}
+
+.doc-link,
+.detail-link {
+  font-size: 13px;
+}
+
+.active-filter-row {
+  flex-wrap: wrap;
+}
+
+.service-summary {
+  font-size: 14px;
+}
+
+.service-tag {
+  font-size: 12px;
+}
+
+body[data-theme="dark"] .search-result-hint {
+  color: #d2e4ff;
+}
+
+body[data-theme="dark"] .search-result-hint button {
+  border-color: #52769e;
+  background: #1b324c;
+  color: #d7e8ff;
+}
+
+body[data-theme="dark"] .category-card.is-active {
+  border-color: #f48120;
+  box-shadow: 0 0 0 2px rgba(244, 129, 32, .25);
+}
+
+@media (max-width: 600px) {
+  .search-submit {
+    min-width: 72px;
+    min-height: 44px;
+  }
+
+  .clear-search {
+    width: 40px;
+    height: 44px;
+    margin-left: 3px;
+  }
+
+  .search-help,
+  .help-label,
+  .keyword-list button {
+    font-size: 12px;
+  }
+
+  .keyword-list button {
+    min-height: 44px;
+  }
+
+  .category-description,
+  .service-summary,
+  .update-body p {
+    font-size: 14px;
+  }
+
+  .category-name,
+  .update-body h3 {
+    font-size: 15px;
+  }
+
+  .category-count,
+  .category-chip,
+  .service-tag,
+  .update-date,
+  .result-count,
+  .section-intro {
+    font-size: 12px;
+  }
+
+  .hero-update-item a,
+  .sidebar-update a {
+    font-size: 13px;
+  }
+
+  .hero-update-item time {
+    font-size: 12px;
+  }
+
+  .catalog-controls select {
+    min-height: 44px;
+  }
+
+  .view-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .menu-toggle,
+  .theme-toggle,
+  .dialog-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
