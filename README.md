@@ -24,6 +24,15 @@ Cloudflareが運営するサイトではありません。Cloudflareおよび各
 - scripts/validate-data.mjs: JSON・参照関係の検証
 - docs/UPDATE_RUNBOOK.md: 公式情報の確認と更新手順
 
+## 画面の操作と確認ポイント
+
+- 検索は入力時にリアルタイムに絞り込み、スペースで区切った複数語はAND条件です。Unicode NFKCと大文字小文字を正規化し、「サーバーレス／サーバレス」「ゼロトラスト／Zero Trust」の表記差も吸収します。検索結果件数は検索欄直下に表示され、「結果を見る」または検索確定で一覧に移動します。
+- カテゴリ選択は検索条件とのAND絞り込みです。カードを再選択すると解除でき、一覧の「条件をリセット」で検索語とカテゴリを解除します（並び順・表示形式は保持します）。
+- カテゴリ選択や検索確定時のスクロールは `prefers-reduced-motion` を尊重します。結果一覧の見出しへフォーカスを移し、キーボード操作でも位置を把握できます。
+- ライト／ダークの手動設定はブラウザの `localStorage` に保持します。保存値がない場合はOS設定を使い、ストレージを利用できない場合もテーマ切り替えを継続します。
+- 「掲載データの最新確認日」はサービスとChangelogの `verifiedAt` の最大値で、全サービスを一括確認した日付ではありません。最新仕様と料金はCloudflare公式Docsを参照してください。
+- 回帰チェック：`node scripts/test-ui-regressions.mjs`。既存のデータ検証・回帰テストも引き続き実施します。
+
 ## データの構造
 
 services.jsonの各項目は安定したid、name、summaryJa、descriptionJa、category、tags、useCases、relatedServiceIds、docsUrl、productUrl、pricingUrl、sourceUrls、releaseStatus、featuredOrder、verifiedAtを持ちます。確認できない任意情報はnullにします。サービス名を変更しても参照関係が保たれるよう、idは変更しません。
