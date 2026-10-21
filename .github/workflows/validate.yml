@@ -1,0 +1,30 @@
+name: UI and catalog checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/app.js
+          node --check scripts/test-regressions.mjs
+          node --check scripts/test-ui-regressions.mjs
+      - name: Validate catalog and UX regression
+        run: |
+          node scripts/validate-data.mjs
+          node scripts/test-regressions.mjs
+          node scripts/test-ui-regressions.mjs
