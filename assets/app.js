@@ -496,6 +496,9 @@
     selectedCategory = "";
     elements.search.value = "";
     renderServices();
+    // Both reset buttons become hidden after filtering is cleared.
+    // Move focus to a stable destination before the browser loses it.
+    showSearchResults();
   }
 
   function showSearchResults() {
@@ -552,10 +555,11 @@
     elements.searchSubmit.addEventListener("click", showSearchResults);
     elements.jumpToResults.addEventListener("click", showSearchResults);
     elements.search.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        showSearchResults();
-      }
+      // Enter commits a Japanese IME candidate before it submits a search.
+      // keyCode 229 covers browsers that report a composition keydown late.
+      if (event.key !== "Enter" || event.isComposing || event.keyCode === 229) return;
+      event.preventDefault();
+      showSearchResults();
     });
 
     document.getElementById("showAllCategories").addEventListener("click", function () {
