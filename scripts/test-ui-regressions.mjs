@@ -8,7 +8,8 @@ const css = await readFile(new URL("../assets/styles.css", import.meta.url), "ut
 
 function section(startName, endName) {
   const start = appJs.indexOf("  function " + startName + "(");
-  const end = appJs.indexOf("  function " + endName + "(", start + 1);
+  let end = appJs.indexOf("  function " + endName + "(", start + 1);
+  if (end === -1) end = appJs.indexOf("  async function " + endName + "(", start + 1);
   assert.ok(start !== -1 && end > start, startName + " / " + endName + " source exists");
   return appJs.slice(start, end);
 }
