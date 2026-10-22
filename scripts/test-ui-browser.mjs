@@ -47,7 +47,8 @@ const url = "http://127.0.0.1:" + server.address().port + prefix;
 let browser;
 
 try {
-  browser = await chromium.launch();
+  // GitHub-hosted Ubuntu runners already ship Chrome; avoid a large browser download.
+  browser = await chromium.launch(process.env.CI ? { channel: "chrome" } : {});
   await mkdir(join(root, "test-results"), { recursive: true });
 
   for (const width of [320, 390, 768, 1280]) {
