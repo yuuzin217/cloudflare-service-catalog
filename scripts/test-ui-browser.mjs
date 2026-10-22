@@ -83,10 +83,24 @@ try {
           inputSize: parseFloat(getComputedStyle(input).fontSize),
           descriptionSize: parseFloat(getComputedStyle(document.querySelector(".category-description")).fontSize),
           sidebarWidth: sidebar.getBoundingClientRect().width,
-          featuredWidth: featured.getBoundingClientRect().width
+          featuredWidth: featured.getBoundingClientRect().width,
+          offenders: [...document.querySelectorAll("body *")]
+            .filter((el) => {
+              const rect = el.getBoundingClientRect();
+              return rect.width > 0 && rect.right > body.clientWidth + 1;
+            })
+            .slice(0, 16)
+            .map((el) => ({
+              tag: el.tagName,
+              className: String(el.className?.baseVal ?? el.className).slice(0, 90),
+              right: Math.round(el.getBoundingClientRect().right),
+              width: Math.round(el.getBoundingClientRect().width)
+            }))
         };
       });
-      assert.ok(sizes.overflow <= 1, width + ": no horizontal overflow (" + sizes.overflow + "px)");
+      await page.screenshot({ path: join(root, "test-results", "catalog-" + width + ".png") });
+      assert.ok(sizes.overflow <= 1, width + ": no horizontal overflow (" + sizes.overflow +
+        "px); offenders: " + JSON.stringify(sizes.offenders));
       if (width <= 768) {
         assert.ok(sizes.inputSize >= 16, width + ": 16px minimum search input to avoid iOS zoom");
         assert.ok(sizes.descriptionSize >= 12, width + ": readable category descriptions");
@@ -95,7 +109,6 @@ try {
         assert.ok(Math.abs(sizes.sidebarWidth - sizes.featuredWidth) <= 2,
           "768px: featured sidebar uses the whole available width");
       }
-      await page.screenshot({ path: join(root, "test-results", "catalog-" + width + ".png") });
 
       if (width !== 390) continue;
 
