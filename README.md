@@ -31,7 +31,7 @@ Cloudflareが運営するサイトではありません。Cloudflareおよび各
 - カテゴリ選択や検索確定時のスクロールは `prefers-reduced-motion` を尊重します。結果一覧の見出しへフォーカスを移し、キーボード操作でも位置を把握できます。
 - ライト／ダークの手動設定はブラウザの `localStorage` に保持します。保存値がない場合はOS設定を使い、ストレージを利用できない場合もテーマ切り替えを継続します。
 - 「掲載データの最新確認日」はサービスとChangelogの `verifiedAt` の最大値で、全サービスを一括確認した日付ではありません。最新仕様と料金はCloudflare公式Docsを参照してください。
-- 回帰チェック：`node scripts/test-ui-regressions.mjs`。既存のデータ検証・回帰テストも引き続き実施します。
+- 回帰チェック：`node scripts/test-ui-regressions.mjs`。GitHub Actionsでは追加でPlaywright + Chromiumにより320px／390px／768px／1280pxの実ブラウザ操作（日本語IME・絞り込み解除後のフォーカス・ダイアログ・テーマ保持・リポジトリサブパス等）を検証し、スクリーンショットをArtifactとして保存します。Playwrightはテスト環境のみに導入し、公開サイトの実行依存にはしません。
 
 ## データの構造
 
