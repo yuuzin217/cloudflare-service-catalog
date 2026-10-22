@@ -7,7 +7,7 @@ import { chromium } from "playwright";
 
 // No production dependencies or public endpoints. Test a GitHub Pages-style
 // repository subpath against the checked-out static files.
-const root = fileURLToPath(new URL("../", import.meta.url));
+const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
 const prefix = "/cloudflare-service-catalog/";
 const mime = {
   ".css": "text/css", ".js": "text/javascript", ".json": "application/json",
@@ -63,8 +63,14 @@ try {
       await page.goto(url, { waitUntil: "networkidle" });
       await page.locator(".service-card").first().waitFor();
 
-      assert.equal(await page.locator(".category-card").count(), 7, width + ": categories loaded");
-      assert.equal(await page.locator(".service-card").count(), 58, width + ": services loaded");
+      const expected = await page.evaluate(async () => {
+        const files = ["./data/categories.json", "./data/services.json"];
+        const responses = await Promise.all(files.map((path) => fetch(path)));
+        const [categories, services] = await Promise.all(responses.map((r) => r.json()));
+        return { categories: categories.length, services: services.length };
+      });
+      assert.equal(await page.locator(".category-card").count(), expected.categories, width + ": categories loaded");
+      assert.equal(await page.locator(".service-card").count(), expected.services, width + ": services loaded");
       assert.deepEqual(errors, [], width + ": no browser script errors");
 
       const sizes = await page.evaluate(() => {
@@ -128,7 +134,7 @@ try {
       await emptyReset.focus();
       await emptyReset.press("Enter");
       assert.equal(await page.evaluate(() => document.activeElement?.id), "servicesTitle");
-      assert.equal(await page.locator(".service-card").count(), 58);
+      assert.equal(await page.locator(".service-card").count(), expected.services);
       await search.fill("Workers");
       const activeReset = page.locator("#resetFilters");
       await activeReset.focus();
