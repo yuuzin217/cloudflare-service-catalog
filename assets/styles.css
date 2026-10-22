@@ -3052,6 +3052,17 @@ body[data-theme="dark"] .category-card.is-active {
   }
 }
 
+/* Preserve breathing room for the search and navigation at the narrowest viewport. */
+@media (max-width: 360px) {
+  .brand-wordmark {
+    display: none;
+  }
+
+  .topbar {
+    gap: 8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
