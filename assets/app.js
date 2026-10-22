@@ -37,6 +37,9 @@
   const elements = {
     search: document.getElementById("searchInput"),
     clearSearch: document.getElementById("clearSearch"),
+    searchResultHint: document.getElementById("searchResultHint"),
+    searchResultMessage: document.getElementById("searchResultMessage"),
+    jumpToResults: document.getElementById("jumpToResults"),
     categoryGrid: document.getElementById("categoryGrid"),
     serviceGrid: document.getElementById("serviceGrid"),
     resultCount: document.getElementById("resultCount"),
@@ -47,7 +50,6 @@
     listView: document.getElementById("listView"),
     activeFilterRow: document.getElementById("activeFilterRow"),
     activeFilterText: document.getElementById("activeFilterText"),
-    sidebarUpdates: document.getElementById("sidebarUpdates"),
     featuredList: document.getElementById("featuredList"),
     updatesList: document.getElementById("updatesList"),
     updatesEmpty: document.getElementById("updatesEmpty"),
@@ -78,7 +80,17 @@
   }
 
   function normalize(value) {
-    return String(value || "").normalize("NFKC").toLocaleLowerCase("ja-JP").trim();
+    return String(value || "")
+      .normalize("NFKC")
+      .toLocaleLowerCase("ja-JP")
+      .replace(/サーバ[ー]?レス/g, "サーバレス")
+      .replace(/ゼロ\s*トラスト/g, "zero trust")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function searchTerms(value) {
+    return normalize(value).split(" ").filter(Boolean);
   }
 
   function officialUrl(value) {
@@ -193,6 +205,7 @@
         selectedCategory = selectedCategory === category.id ? "" : category.id;
         updateFilterState();
         renderServices();
+        showSearchResults();
       });
       elements.categoryGrid.appendChild(button);
     });
@@ -267,7 +280,7 @@
   function updateFilterState() {
     const activeCategory = selectedCategory ? getCategoryName(selectedCategory) : "";
     const parts = [];
-    if (searchTerm) parts.push("検索: " + searchTerm);
+    if (searchTerms(searchTerm).length) parts.push("検索: " + searchTerm.trim());
     if (activeCategory) parts.push("カテゴリ: " + activeCategory);
     elements.activeFilterRow.hidden = parts.length === 0;
     elements.activeFilterText.textContent = parts.join("　·　");
@@ -280,11 +293,13 @@
   }
 
   function renderServices() {
-    const query = normalize(searchTerm);
+    const terms = searchTerms(searchTerm);
     const visible = services.filter(function (service) {
       const matchesCategory = !selectedCategory || service.category === selectedCategory;
-      const matchesSearch = !query || normalize(searchableText(service)).includes(query);
-      return matchesCategory && matchesSearch;
+      const text = normalize(searchableText(service));
+      return matchesCategory && terms.every(function (term) {
+        return text.includes(term);
+      });
     }).sort(compareServices);
 
     elements.serviceGrid.replaceChildren();
@@ -293,28 +308,19 @@
       elements.serviceGrid.appendChild(createServiceCard(service));
     });
 
-    elements.resultCount.textContent = query || selectedCategory
+    const isFiltered = terms.length > 0 || Boolean(selectedCategory);
+    elements.resultCount.textContent = isFiltered
       ? visible.length + "件が見つかりました"
       : "全" + services.length + "サービス";
+    elements.searchResultHint.hidden = !isFiltered;
+    if (isFiltered) {
+      const label = terms.length ? "検索結果" : getCategoryName(selectedCategory) + "のサービス";
+      elements.searchResultMessage.textContent = label + ": " + visible.length + "件";
+    }
     elements.serviceGrid.setAttribute("aria-busy", "false");
     elements.emptyState.hidden = visible.length > 0;
     elements.serviceGrid.hidden = visible.length === 0;
     updateFilterState();
-  }
-
-  function buildSidebarUpdates() {
-    elements.sidebarUpdates.replaceChildren();
-    orderedUpdates().slice(0, 4).forEach(function (update) {
-      const item = makeElement("li", "sidebar-update");
-      const time = makeElement("time", "", formatDate(update.publishedAt));
-      time.dateTime = update.publishedAt;
-      item.appendChild(time);
-
-      const link = makeElement("a", "", update.titleJa);
-      link.href = "#update-" + update.id;
-      item.appendChild(link);
-      elements.sidebarUpdates.appendChild(item);
-    });
   }
 
   function buildHeroUpdates() {
@@ -488,16 +494,40 @@
   function clearFilters() {
     searchTerm = "";
     selectedCategory = "";
-    sortMode = "featured";
-    viewMode = "grid";
     elements.search.value = "";
-    elements.sort.value = "featured";
-    elements.gridView.classList.add("is-active");
-    elements.listView.classList.remove("is-active");
-    elements.gridView.setAttribute("aria-pressed", "true");
-    elements.listView.setAttribute("aria-pressed", "false");
-    buildCategoryGrid();
     renderServices();
+    // Both reset buttons become hidden after filtering is cleared.
+    // Move focus to a stable destination before the browser loses it.
+    showSearchResults();
+  }
+
+  function showSearchResults() {
+    const reducedMotion = typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("services").scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start"
+    });
+    document.getElementById("servicesTitle").focus({ preventScroll: true });
+  }
+
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.body.dataset.theme = isDark ? "dark" : "light";
+    elements.themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+    elements.themeToggle.setAttribute("aria-label", isDark ? "ライトモードに切り替え" : "ダークモードに切り替え");
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", isDark ? "#111b2c" : "#ffffff");
+  }
+
+  function initialTheme() {
+    try {
+      const saved = window.localStorage.getItem("cloudflare-catalog-theme");
+      if (saved === "dark" || saved === "light") return saved;
+    } catch (error) {
+      // Private browsing or storage policy may disallow access.
+    }
+    return typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   function bindEvents() {
@@ -522,19 +552,21 @@
       elements.search.focus();
     });
 
-    function showSearchResults() {
-      document.getElementById("services").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
     elements.searchSubmit.addEventListener("click", showSearchResults);
+    elements.jumpToResults.addEventListener("click", showSearchResults);
     elements.search.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") showSearchResults();
+      // Enter commits a Japanese IME candidate before it submits a search.
+      // keyCode 229 covers browsers that report a composition keydown late.
+      if (event.key !== "Enter" || event.isComposing || event.keyCode === 229) return;
+      event.preventDefault();
+      showSearchResults();
     });
 
     document.getElementById("showAllCategories").addEventListener("click", function () {
+      const hadCategory = Boolean(selectedCategory);
       selectedCategory = "";
-      updateFilterState();
       renderServices();
+      if (hadCategory) showSearchResults();
     });
 
     document.getElementById("resetFilters").addEventListener("click", clearFilters);
@@ -590,11 +622,13 @@
     });
 
     elements.themeToggle.addEventListener("click", function () {
-      const isDark = document.body.dataset.theme !== "dark";
-      document.body.dataset.theme = isDark ? "dark" : "light";
-      elements.themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
-      elements.themeToggle.setAttribute("aria-label", isDark ? "ライトモードに切り替え" : "ダークモードに切り替え");
-      document.querySelector('meta[name="theme-color"]').setAttribute("content", isDark ? "#111b2c" : "#ffffff");
+      const theme = document.body.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(theme);
+      try {
+        window.localStorage.setItem("cloudflare-catalog-theme", theme);
+      } catch (error) {
+        // Switching themes remains functional if storage is unavailable.
+      }
     });
   }
 
@@ -614,7 +648,6 @@
       updates = data[2];
 
       buildCategoryGrid();
-      buildSidebarUpdates();
       buildHeroUpdates();
       buildFeaturedList();
       buildUpdatesList();
@@ -626,9 +659,11 @@
       elements.serviceGrid.setAttribute("aria-busy", "false");
       elements.serviceGrid.hidden = true;
       elements.loadError.hidden = false;
+      elements.searchResultHint.hidden = true;
     }
   }
 
+  applyTheme(initialTheme());
   bindEvents();
   loadCatalog();
 })();

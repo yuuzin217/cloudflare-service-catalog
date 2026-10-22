@@ -45,7 +45,7 @@
         <a class="github-icon-link" href="https://github.com/yuuzin217/cloudflare-service-catalog" target="_blank" rel="noopener noreferrer" aria-label="GitHubリポジトリを開く">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.5 4.1 1.8.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.3-5.1-5.5 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.8 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.4.2 2.5.1 2.8.7.8 1.1 1.7 1.1 2.9 0 4.2-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3.1c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z" /></svg>
         </a>
-        <span class="verified-pill">最終更新: <time id="headerVerifiedDate">—</time></span>
+        <span class="verified-pill" title="掲載データの中で最も新しい確認日です。全サービスの再確認日ではありません。">最新確認: <time id="headerVerifiedDate">—</time></span>
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="ダークモードに切り替え" aria-pressed="false">
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.7 8.7 0 0 1 8.9 3.8 8.8 8.8 0 1 0 20.2 15.1Z"></path></svg>
@@ -66,9 +66,14 @@
             <span class="search-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
             </span>
-            <input id="searchInput" type="search" autocomplete="off" placeholder="サービス名・キーワードで検索（例：D1、Workers、セキュリティ、画像処理）" aria-describedby="searchHelp">
+            <input id="searchInput" type="search" autocomplete="off" placeholder="サービス名・キーワードで検索（例：D1、Workers、セキュリティ、画像処理）" aria-describedby="searchHelp searchResultHint">
             <button class="clear-search" id="clearSearch" type="button" aria-label="検索語を消去" hidden>×</button>
-            <button class="search-submit" id="searchSubmit" type="button">検索</button>
+            <button class="search-submit" id="searchSubmit" type="button" aria-controls="services">検索</button>
+          </div>
+
+          <div class="search-result-hint" id="searchResultHint" hidden>
+            <span id="searchResultMessage"></span>
+            <button id="jumpToResults" type="button" aria-controls="services">結果を見る <span aria-hidden="true">↓</span></button>
           </div>
 
           <div class="search-help" id="searchHelp">
@@ -103,7 +108,7 @@
         <div>
           <h2 id="categoriesTitle">カテゴリから探す</h2>
         </div>
-        <button class="text-button" id="showAllCategories" type="button">すべて表示</button>
+        <button class="text-button" id="showAllCategories" type="button">カテゴリを解除</button>
       </div>
       <div class="category-grid" id="categoryGrid" aria-label="サービスカテゴリ"></div>
     </section>
@@ -112,8 +117,8 @@
       <div class="catalog-main">
         <div class="catalog-toolbar">
           <div class="catalog-title-wrap">
-            <h2 id="servicesTitle">サービス一覧</h2>
-            <p class="result-count" id="resultCount" role="status" aria-live="polite">サービス情報を読み込み中…</p>
+            <h2 id="servicesTitle" tabindex="-1">サービス一覧</h2>
+            <p class="result-count" id="resultCount" role="status" aria-live="polite" aria-atomic="true">サービス情報を読み込み中…</p>
           </div>
           <div class="catalog-controls">
             <label class="sr-only" for="sortSelect">並び替え</label>
@@ -138,7 +143,7 @@
           <button class="text-button" id="resetFilters" type="button">条件をリセット</button>
         </div>
 
-        <div class="service-grid" id="serviceGrid" aria-live="polite" aria-busy="true"></div>
+        <div class="service-grid" id="serviceGrid" aria-busy="true"></div>
         <div class="empty-state" id="emptyState" hidden>
           <span class="empty-icon" aria-hidden="true">⌕</span>
           <h3>条件に合うサービスが見つかりません</h3>
@@ -152,14 +157,6 @@
       </div>
 
       <aside class="catalog-sidebar" aria-label="サービスの案内">
-        <section class="sidebar-block" aria-labelledby="sidebarUpdatesTitle">
-          <div class="sidebar-heading">
-            <h3 id="sidebarUpdatesTitle">新着サービス・更新情報</h3>
-            <a href="#updates" aria-label="最新情報をすべて見る">もっと見る <span aria-hidden="true">→</span></a>
-          </div>
-          <ol class="sidebar-updates" id="sidebarUpdates"></ol>
-        </section>
-
         <section class="sidebar-block featured-block" aria-labelledby="featuredTitle">
           <div class="sidebar-heading">
           <h3 id="featuredTitle">注目サービス</h3>
@@ -221,7 +218,7 @@
       </nav>
     </div>
     <div class="shell footer-meta">
-      <span>最終情報確認日：<time id="lastVerifiedDate">—</time></span>
+      <span>掲載データの最新確認日：<time id="lastVerifiedDate">—</time>（全件の再確認日ではありません）</span>
       <span>Cloudflareおよび各サービス名は各社の商標です。</span>
     </div>
   </footer>
