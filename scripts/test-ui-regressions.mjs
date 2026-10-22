@@ -166,7 +166,8 @@ const eventContext = {
     getElementById() { return noopElement; },
     addEventListener() {}
   },
-  showSearchResults() { resultsNavigationCount++; }
+  showSearchResults() { resultsNavigationCount++; },
+  clearFilters() {}
 };
 runInNewContext(section("bindEvents", "loadCatalog"), eventContext);
 eventContext.bindEvents();
