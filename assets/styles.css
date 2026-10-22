@@ -2964,6 +2964,18 @@ body[data-theme="dark"] .category-card.is-active {
   box-shadow: 0 0 0 2px rgba(244, 129, 32, .25);
 }
 
+/* Tablet sidebar has only one block after the redundant updates are removed. */
+@media (max-width: 820px) {
+  .catalog-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* iOS Safari may zoom an input with text smaller than 16px. */
+  .search-wrap input {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 600px) {
   .search-submit {
     min-width: 72px;
