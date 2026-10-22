@@ -131,4 +131,60 @@ assert.equal(themeHarness(null, true).context.initialTheme(), "dark", "initial t
 assert.equal(themeHarness(null, false).context.initialTheme(), "light");
 assert.equal(themeHarness(null, true, true).context.initialTheme(), "dark", "storage failure falls back to OS");
 
-console.log("OK: phase 1 UI hooks, multi-term search, category filtering and theme fallback.");
+
+// Filter reset hides its originating button; verify focus is handed off.
+let resetRenderCount = 0;
+let resetFocusCount = 0;
+const resetContext = {
+  searchTerm: "no-results",
+  selectedCategory: "compute",
+  elements: { search: { value: "no-results" } },
+  renderServices() { resetRenderCount++; },
+  showSearchResults() { resetFocusCount++; }
+};
+runInNewContext(section("clearFilters", "showSearchResults"), resetContext);
+resetContext.clearFilters();
+assert.equal(resetContext.searchTerm, "");
+assert.equal(resetContext.selectedCategory, "");
+assert.equal(resetContext.elements.search.value, "");
+assert.equal(resetRenderCount, 1);
+assert.equal(resetFocusCount, 1, "filter reset moves focus to the results heading");
+
+// Exercise the actual keydown handler rather than only matching its source.
+let keydownHandler;
+let resultsNavigationCount = 0;
+const noopElement = { addEventListener() {} };
+const searchField = {
+  addEventListener(type, handler) {
+    if (type === "keydown") keydownHandler = handler;
+  }
+};
+const eventContext = {
+  elements: new Proxy({}, { get(target, prop) { return prop === "search" ? searchField : noopElement; } }),
+  document: {
+    getElementById() { return noopElement; },
+    addEventListener() {}
+  },
+  showSearchResults() { resultsNavigationCount++; }
+};
+runInNewContext(section("bindEvents", "loadCatalog"), eventContext);
+eventContext.bindEvents();
+assert.equal(typeof keydownHandler, "function");
+
+function pressEnter({ isComposing = false, keyCode = 13, key = "Enter" } = {}) {
+  let prevented = false;
+  keydownHandler({ key, isComposing, keyCode, preventDefault() { prevented = true; } });
+  return prevented;
+}
+
+assert.equal(pressEnter({ isComposing: true }), false, "IME candidate confirmation is untouched");
+assert.equal(pressEnter({ keyCode: 229 }), false, "legacy IME keydown is untouched");
+assert.equal(resultsNavigationCount, 0, "IME must not move focus to results");
+assert.equal(pressEnter({ key: "a" }), false, "regular typing does not navigate");
+assert.equal(pressEnter(), true, "ordinary Enter submits the search");
+assert.equal(resultsNavigationCount, 1);
+
+assert.match(css, /@media \(max-width: 820px\) \{\s*\.catalog-sidebar \{\s*grid-template-columns: minmax\(0, 1fr\)/);
+assert.match(css, /@media \(max-width: 820px\)[\s\S]*?\.search-wrap input \{\s*font-size: 16px;/);
+
+console.log("OK: phase 1 UI hooks, multi-term search, category filtering and theme fallback, IME, reset focus and tablet CSS.");
