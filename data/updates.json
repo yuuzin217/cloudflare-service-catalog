@@ -88,7 +88,7 @@
     "id": "sandboxes-emudhra-ca-20261022",
     "publishedAt": "2026-10-22",
     "titleJa": "Sandbox SDKがeMudhra証明書侵害に対応",
-    "summaryJa": "旧Sandboxイメージが信頼する中間CAの秘密鍵に問題があり、HTTPS通信の偽装リスクがあります。SDK 0.x利用者は0.12.14へ更新し、イメージ再配備が必要です。",
+    "summaryJa": "eMudhra中間CAの秘密鍵が復元可能となり、旧SandboxイメージではHTTPS通信が偽装される恐れがあります。SDK 0.xは0.12.14へ更新して再デプロイが必要です。SDK 1.xはベースイメージの再取得とビルドキャッシュ削除後に再ビルド・再デプロイし、稼働中Sandboxの置換と使用中スナップショットの再作成が必要です。",
     "serviceIds": [
       "sandboxes"
     ],
