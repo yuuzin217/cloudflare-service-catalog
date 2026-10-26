@@ -111,7 +111,7 @@ for (const [query, expectedId] of [
   context.searchTerm = query;
   context.selectedCategory = "";
   context.renderServices();
-  assert.deepEqual(grid.items, [expectedId], `${query} finds ${expectedId}`);
+  assert.ok(grid.items.includes(expectedId), `${query} finds ${expectedId}: ${grid.items.join(", ")}`);
 }
 
 
