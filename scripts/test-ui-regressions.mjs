@@ -97,6 +97,24 @@ checkFilter("R2", "compute", []);
 checkFilter("", "storage", ["r2"]);
 assert.equal(elements.searchResultMessage.textContent, "Storageのサービス: 1件");
 
+// Legacy product names remain searchable after display-name changes.
+// Use the actual catalog records with the production normalize/searchableText/renderServices functions.
+const catalogServices = JSON.parse(await readFile(new URL("../data/services.json", import.meta.url), "utf8"));
+context.services = catalogServices.filter((service) => ["magic-wan", "magic-firewall"].includes(service.id));
+assert.equal(context.services.length, 2, "both renamed services exist");
+for (const [query, expectedId] of [
+  ["Magic WAN", "magic-wan"],
+  ["Cloudflare WAN", "magic-wan"],
+  ["Magic Firewall", "magic-firewall"],
+  ["Cloudflare Network Firewall", "magic-firewall"]
+]) {
+  context.searchTerm = query;
+  context.selectedCategory = "";
+  context.renderServices();
+  assert.deepEqual(grid.items, [expectedId], `${query} finds ${expectedId}`);
+}
+
+
 function themeHarness(saved, osDark, throwsOnStorage = false) {
   const attributes = {};
   const body = { dataset: {} };
