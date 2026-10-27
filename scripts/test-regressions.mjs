@@ -31,6 +31,28 @@ assert.ok(pipelines.relatedServiceIds.includes("basin"), "Pipelines references B
 assert.ok(basin.relatedServiceIds.includes("pipelines"), "Basin references Pipelines");
 assert.ok(byId.has("cloud-workload-security"), "Cloud Workload Security remains represented");
 
+// Sandbox environment pricing coverage: a single Containers-only URL is not a complete Sandboxes price guide.
+// The Sandboxes overview links to both official environment-specific pricing pages.
+const sandboxes = byId.get("sandboxes");
+assert.ok(sandboxes, "Sandboxes remains represented");
+assert.equal(sandboxes.pricingUrl, null, "Sandboxes does not present Containers-only pricing as the sole price link");
+for (const url of [
+  "https://developers.cloudflare.com/containers/platform/pricing/",
+  "https://developers.cloudflare.com/dynamic-workers/pricing/"
+]) {
+  assert.ok(sandboxes.sourceUrls.includes(url), `Sandbox pricing source recorded: ${url}`);
+}
+assert.match(sandboxes.descriptionJa, /料金体系.*異な/, "Sandbox description distinguishes pricing models");
+
+// K2 is a time-limited retained log, not an indefinite archive.
+const k2 = byId.get("k2");
+assert.ok(k2, "K2 remains represented");
+assert.match(k2.summaryJa, /保持期間/, "K2 summary clarifies bounded event retention");
+assert.doesNotMatch(k2.summaryJa, /永続/, "K2 summary does not imply indefinite retention");
+assert.match(k2.descriptionJa, /既定7日.*上限30日/, "K2 describes the documented retention limits");
+assert.ok(k2.sourceUrls.includes("https://developers.cloudflare.com/k2/platform/limits/"), "K2 limits have an official source");
+
+
 // The detail dialog keeps its accessible name and puts focus on the generated heading.
 assert.match(indexHtml, /<dialog[^>]*aria-labelledby="detailTitle"/);
 assert.match(appJs, /title\.id\s*=\s*"detailTitle"/);
