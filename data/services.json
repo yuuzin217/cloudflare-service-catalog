@@ -131,7 +131,7 @@
     "name": "Sandboxes",
     "iconLabel": "Sb",
     "summaryJa": "AI生成コードなどを隔離環境で安全に実行する基盤。",
-    "descriptionJa": "Workersから隔離されたコンテナやDynamic Workersを利用し、コマンド実行、ファイル操作、コードの検証を行えます。",
+    "descriptionJa": "Workersから隔離されたコンテナやDynamic Workersを利用し、コマンド実行、ファイル操作、コードの検証を行えます。料金体系は実行方式ごとに異なるため、公式Docsから各方式の料金を確認してください。",
     "category": "compute",
     "tags": [
       "コード実行",
@@ -149,15 +149,16 @@
     ],
     "docsUrl": "https://developers.cloudflare.com/sandbox/",
     "productUrl": "https://www.cloudflare.com/products/sandboxes/",
-    "pricingUrl": "https://developers.cloudflare.com/containers/platform/pricing/",
+    "pricingUrl": null,
     "sourceUrls": [
       "https://developers.cloudflare.com/sandbox/",
       "https://www.cloudflare.com/products/sandboxes/",
-      "https://developers.cloudflare.com/containers/platform/pricing/"
+      "https://developers.cloudflare.com/containers/platform/pricing/",
+      "https://developers.cloudflare.com/dynamic-workers/pricing/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
-    "verifiedAt": "2026-10-26"
+    "verifiedAt": "2026-10-27"
   },
   {
     "id": "durable-objects",
@@ -442,12 +443,12 @@
     "id": "k2",
     "name": "K2",
     "iconLabel": "K2",
-    "summaryJa": "イベントを順序付きで永続保存し、複数の購読者へ配信するログ基盤。",
-    "descriptionJa": "WorkersやHTTP APIからイベントを追記し、購読者ごとに読み取り位置を管理できます。現在はPublic Betaで、Workers Paidプランが必要です。",
+    "summaryJa": "イベントを設定した保持期間内に順序付きで保存し、複数の購読者へ配信するログ基盤。",
+    "descriptionJa": "WorkersやHTTP APIからイベントを追記し、購読者ごとに読み取り位置を管理できます。保持期間は既定7日・通常上限30日で、上限引き上げは申請が必要です。現在はPublic Betaで、Workers Paidプランが必要です。",
     "category": "storage",
     "tags": [
       "イベントストリーム",
-      "永続ログ",
+      "イベントログ",
       "非同期処理"
     ],
     "useCases": [
@@ -464,11 +465,12 @@
     "sourceUrls": [
       "https://developers.cloudflare.com/k2/",
       "https://www.cloudflare.com/products/k2/",
-      "https://developers.cloudflare.com/k2/platform/pricing/"
+      "https://developers.cloudflare.com/k2/platform/pricing/",
+      "https://developers.cloudflare.com/k2/platform/limits/"
     ],
     "releaseStatus": "Open beta",
     "featuredOrder": null,
-    "verifiedAt": "2026-10-26"
+    "verifiedAt": "2026-10-27"
   },
   {
     "id": "hyperdrive",
