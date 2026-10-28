@@ -99,6 +99,23 @@ try {
             }))
         };
       });
+      // Preserve the Japanese hero title as one phrase at narrow viewport widths.
+      const titlePhrase = await page.locator("#pageTitle span").evaluate((span) => {
+        const rect = span.getBoundingClientRect();
+        return {
+          text: span.textContent,
+          whiteSpace: getComputedStyle(span).whiteSpace,
+          lineRects: span.getClientRects().length,
+          left: rect.left,
+          right: rect.right
+        };
+      });
+      assert.equal(titlePhrase.text, "サービス図鑑", width + ": Japanese title phrase is intact");
+      assert.equal(titlePhrase.whiteSpace, "nowrap", width + ": Japanese title is nonbreaking");
+      assert.equal(titlePhrase.lineRects, 1, width + ": title phrase stays on one line");
+      assert.ok(titlePhrase.left >= -1 && titlePhrase.right <= width + 1,
+        width + ": Japanese title remains inside viewport (" + JSON.stringify(titlePhrase) + ")");
+
       await page.screenshot({ path: join(root, "test-results", "catalog-" + width + ".png") });
       assert.ok(sizes.overflow <= 1, width + ": no horizontal overflow (" + sizes.overflow +
         "px); offenders: " + JSON.stringify(sizes.offenders));
