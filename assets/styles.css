@@ -17,7 +17,7 @@
   --radius-card: 14px;
   --radius-control: 10px;
   --content-width: 1280px;
-  font-family: Inter, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  font-family: "IBM Plex Sans", "IBM Plex Sans JP", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
