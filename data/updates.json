@@ -1,5 +1,177 @@
 [
   {
+    "id": "waf-brotli-nextjs-emergency-20261025",
+    "publishedAt": "2026-10-25",
+    "titleJa": "WAFにBrotli関連脆弱性の検知ルールを追加",
+    "summaryJa": "CVE-2026-111497に関するBrotliリクエストとNext.js画像最適化パスの検知ルールを追加。既定はLogで遮断せず、既存のBlock上書き設定に注意が必要です。",
+    "serviceIds": [
+      "waf"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "d1-undelete-seven-days-20261023",
+    "publishedAt": "2026-10-23",
+    "titleJa": "D1の削除済みDB復元期限が7日以内に制限",
+    "summaryJa": "D1のundelete APIは削除から7日を超えたデータベースの復元要求を受け付けなくなりました。",
+    "serviceIds": [
+      "d1"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "workers-builds-package-manager-20261023",
+    "publishedAt": "2026-10-23",
+    "titleJa": "Workers BuildsでpackageManagerによるバージョン固定に対応",
+    "summaryJa": "package.jsonのpackageManagerでnpmなどの正確なバージョンを指定でき、ローカルとビルド環境の差を抑えられます。",
+    "serviceIds": [
+      "workers"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "warp-windows-beta-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "Windows版Cloudflare One ClientのBeta v2026.9.1555.1",
+    "summaryJa": "Global Accelerationの接続先自動選択、管理者コードによる不正なアンインストール防止、MTU関連の改善などがBeta版に追加されました。",
+    "serviceIds": [
+      "warp-client"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "warp-macos-beta-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "macOS版Cloudflare One ClientのBeta v2026.9.1555.1",
+    "summaryJa": "このBeta版の最低対応OSはmacOS 15.0となり、macOS 14では動作しません。Global Accelerationや接続診断も改善されました。",
+    "serviceIds": [
+      "warp-client"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-warp-macos-beta/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "agents-mcp-sse-retirement-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "CloudflareのMCPサーバーが/sseを廃止",
+    "summaryJa": "製品別MCPサーバーは/mcpのみを提供し、旧/sseへのアクセスは410 Goneを返します。利用中のMCPクライアントは接続URLの変更が必要です。",
+    "serviceIds": [
+      "agents"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflare-mcp-servers-retire-sse/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "agents-pi14-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "Agents SDKがPi 1.4に対応し復旧処理を改善",
+    "summaryJa": "Agents SDK v0.30.0でPiHarnessの休止・障害復旧を改善。Pi 1.4のセッション保存形式は旧版に戻せないため、更新時はロールバック制約に注意が必要です。",
+    "serviceIds": [
+      "agents",
+      "durable-objects"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-pi-harness-pi-1-4/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "sandboxes-emudhra-ca-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "Sandbox SDKがeMudhra証明書侵害に対応",
+    "summaryJa": "eMudhra中間CAの秘密鍵が復元可能となり、旧SandboxイメージではHTTPS通信が偽装される恐れがあります。SDK 0.xは0.12.14へ更新して再デプロイが必要です。SDK 1.xはベースイメージの再取得とビルドキャッシュ削除後に再ビルド・再デプロイし、稼働中Sandboxの置換と使用中スナップショットの再作成が必要です。",
+    "serviceIds": [
+      "sandboxes"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "tunnel-path-normalization-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "Cloudflare TunnelがURLパス正規化に対応",
+    "summaryJa": "cloudflared 2026.10.0からURL正規化を任意で有効化できます。2027-01-25以降の新リリースで既定有効化予定のため、Access検証付き経路ルールの動作確認が必要です。",
+    "serviceIds": [
+      "cloudflare-tunnel",
+      "access"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "tunnel-read-monitor-ga-20261022",
+    "publishedAt": "2026-10-22",
+    "titleJa": "Tunnel単位のRead And Monitorロールが一般提供",
+    "summaryJa": "特定のTunnelに対して設定変更権限を与えずに読み取りとリモートログ配信を許可できるロールが一般提供されました。",
+    "serviceIds": [
+      "cloudflare-tunnel"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "agents-createai-20261021",
+    "publishedAt": "2026-10-21",
+    "titleJa": "Agents SDKにcreateAIを追加し旧Providerを非推奨化",
+    "summaryJa": "createAIでWorkers AIとAI Gatewayのモデル利用を統合。workers-ai-providerとai-gateway-providerは機能凍結・非推奨となり、移行が案内されています。",
+    "serviceIds": [
+      "agents",
+      "workers-ai",
+      "ai-gateway"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-21-createai/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "basin-sql-offset-20261021",
+    "publishedAt": "2026-10-21",
+    "titleJa": "Basin SQLがOFFSETによるページングに対応",
+    "summaryJa": "Basin SQLでLIMITとOFFSETを組み合わせ、クエリ結果を分割取得できるようになりました。",
+    "serviceIds": [
+      "basin"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "waf-managed-emergency-20261021",
+    "publishedAt": "2026-10-21",
+    "titleJa": "Cloudflare Managed Rulesetに異常実行検知ルール7件を追加",
+    "summaryJa": "WAFのCloudflare Managed Rulesetに異常な実行パターンを検知してBlockする7件のルールが追加されました。",
+    "serviceIds": [
+      "waf"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-cfmr/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
+    "id": "waf-free-emergency-20261021",
+    "publishedAt": "2026-10-21",
+    "titleJa": "Cloudflare Free Rulesetに異常実行遮断ルール7件を追加",
+    "summaryJa": "無料のWAFルールセットにも異常な実行パターンをBlockする7件のルールが追加されました。",
+    "serviceIds": [
+      "waf"
+    ],
+    "type": "service-update",
+    "sourceUrl": "https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-free/",
+    "verifiedAt": "2026-10-26"
+  },
+  {
     "id": "warp-windows-client-2026-10-20",
     "publishedAt": "2026-10-20",
     "titleJa": "Cloudflare One Client for Windows v2026.8.2115.0",

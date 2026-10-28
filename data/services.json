@@ -65,6 +65,39 @@
     "verifiedAt": "2026-10-20"
   },
   {
+    "id": "email-service",
+    "name": "Email Service",
+    "iconLabel": "Em",
+    "summaryJa": "Workersからメールの送信と受信処理を行うサービス。",
+    "descriptionJa": "トランザクションメールの送信と受信メールのルーティングを提供します。送信機能はBetaで、宛先やプランによって利用条件が異なります。",
+    "category": "compute",
+    "tags": [
+      "メール",
+      "Workers",
+      "自動化"
+    ],
+    "useCases": [
+      "アプリケーションの通知メール送信",
+      "受信メールをWorkersで処理"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "queues",
+      "agents"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/email-service/",
+    "productUrl": "https://www.cloudflare.com/products/email-service/",
+    "pricingUrl": "https://developers.cloudflare.com/email-service/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/email-service/",
+      "https://www.cloudflare.com/products/email-service/",
+      "https://developers.cloudflare.com/email-service/platform/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-26"
+  },
+  {
     "id": "containers",
     "name": "Containers",
     "iconLabel": "Cn",
@@ -92,6 +125,40 @@
     "releaseStatus": null,
     "featuredOrder": null,
     "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "sandboxes",
+    "name": "Sandboxes",
+    "iconLabel": "Sb",
+    "summaryJa": "AI生成コードなどを隔離環境で安全に実行する基盤。",
+    "descriptionJa": "Workersから隔離されたコンテナやDynamic Workersを利用し、コマンド実行、ファイル操作、コードの検証を行えます。料金体系は実行方式ごとに異なるため、公式Docsから各方式の料金を確認してください。",
+    "category": "compute",
+    "tags": [
+      "コード実行",
+      "隔離環境",
+      "AIエージェント"
+    ],
+    "useCases": [
+      "AIエージェントによるコード実行",
+      "ユーザー提供コードの隔離テスト"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "containers",
+      "agents"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/sandbox/",
+    "productUrl": "https://www.cloudflare.com/products/sandboxes/",
+    "pricingUrl": null,
+    "sourceUrls": [
+      "https://developers.cloudflare.com/sandbox/",
+      "https://www.cloudflare.com/products/sandboxes/",
+      "https://developers.cloudflare.com/containers/platform/pricing/",
+      "https://developers.cloudflare.com/dynamic-workers/pricing/"
+    ],
+    "releaseStatus": null,
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-27"
   },
   {
     "id": "durable-objects",
@@ -371,6 +438,39 @@
     "releaseStatus": null,
     "featuredOrder": null,
     "verifiedAt": "2026-10-20"
+  },
+  {
+    "id": "k2",
+    "name": "K2",
+    "iconLabel": "K2",
+    "summaryJa": "イベントを設定した保持期間内に順序付きで保存し、複数の購読者へ配信するログ基盤。",
+    "descriptionJa": "WorkersやHTTP APIからイベントを追記し、購読者ごとに読み取り位置を管理できます。保持期間は既定7日・通常上限30日で、上限引き上げは申請が必要です。現在はPublic Betaで、Workers Paidプランが必要です。",
+    "category": "storage",
+    "tags": [
+      "イベントストリーム",
+      "イベントログ",
+      "非同期処理"
+    ],
+    "useCases": [
+      "イベントの収集と再処理",
+      "複数コンシューマーへのイベント配信"
+    ],
+    "relatedServiceIds": [
+      "workers",
+      "queues"
+    ],
+    "docsUrl": "https://developers.cloudflare.com/k2/",
+    "productUrl": "https://www.cloudflare.com/products/k2/",
+    "pricingUrl": "https://developers.cloudflare.com/k2/platform/pricing/",
+    "sourceUrls": [
+      "https://developers.cloudflare.com/k2/",
+      "https://www.cloudflare.com/products/k2/",
+      "https://developers.cloudflare.com/k2/platform/pricing/",
+      "https://developers.cloudflare.com/k2/platform/limits/"
+    ],
+    "releaseStatus": "Open beta",
+    "featuredOrder": null,
+    "verifiedAt": "2026-10-27"
   },
   {
     "id": "hyperdrive",
@@ -1148,7 +1248,7 @@
   },
   {
     "id": "magic-wan",
-    "name": "Magic WAN",
+    "name": "Cloudflare WAN",
     "iconLabel": "MW",
     "summaryJa": "拠点やクラウドをCloudflareのグローバルネットワークへ接続するWANサービス。",
     "descriptionJa": "拠点、データセンター、クラウドなどのトラフィックをCloudflareへ接続し、ネットワークを一元管理できます。",
@@ -1156,7 +1256,8 @@
     "tags": [
       "WAN",
       "拠点接続",
-      "SASE"
+      "SASE",
+      "Magic WAN"
     ],
     "useCases": [
       "複数拠点のネットワーク接続",
@@ -1167,19 +1268,19 @@
       "magic-firewall",
       "cloudflare-tunnel"
     ],
-    "docsUrl": "https://developers.cloudflare.com/magic-wan/",
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-wan/",
     "productUrl": null,
     "pricingUrl": null,
     "sourceUrls": [
-      "https://developers.cloudflare.com/magic-wan/"
+      "https://developers.cloudflare.com/cloudflare-wan/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
-    "verifiedAt": "2026-10-20"
+    "verifiedAt": "2026-10-26"
   },
   {
     "id": "magic-firewall",
-    "name": "Magic Firewall",
+    "name": "Cloudflare Network Firewall",
     "iconLabel": "MF",
     "summaryJa": "Cloudflareネットワーク上で企業トラフィックを検査するファイアウォールサービス。",
     "descriptionJa": "ネットワークトラフィックにルールを適用し、企業ネットワークへの不要な通信を制御します。",
@@ -1187,7 +1288,8 @@
     "tags": [
       "ネットワークファイアウォール",
       "トラフィック制御",
-      "企業ネットワーク"
+      "企業ネットワーク",
+      "Magic Firewall"
     ],
     "useCases": [
       "ネットワーク境界の通信制御",
@@ -1197,15 +1299,15 @@
       "magic-wan",
       "magic-transit"
     ],
-    "docsUrl": "https://developers.cloudflare.com/magic-firewall/",
+    "docsUrl": "https://developers.cloudflare.com/cloudflare-network-firewall/",
     "productUrl": null,
     "pricingUrl": null,
     "sourceUrls": [
-      "https://developers.cloudflare.com/magic-firewall/"
+      "https://developers.cloudflare.com/cloudflare-network-firewall/"
     ],
     "releaseStatus": null,
     "featuredOrder": null,
-    "verifiedAt": "2026-10-20"
+    "verifiedAt": "2026-10-26"
   },
   {
     "id": "spectrum",
