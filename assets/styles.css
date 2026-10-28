@@ -256,6 +256,7 @@ select:focus-visible {
   color: #5b6b80;
   font-size: clamp(15px, 1.6vw, 19px);
   letter-spacing: .01em;
+  text-wrap: balance;
 }
 
 .search-wrap {
