@@ -110,6 +110,11 @@ try {
           right: rect.right
         };
       });
+      if (width <= 390) {
+        const subtitleBreak = await page.locator(".hero-description br")
+          .evaluate((br) => getComputedStyle(br).display);
+        assert.notEqual(subtitleBreak, "none", width + ": subtitle preserves its phrase break");
+      }
       assert.equal(titlePhrase.text, "サービス図鑑", width + ": Japanese title phrase is intact");
       assert.equal(titlePhrase.whiteSpace, "nowrap", width + ": Japanese title is nonbreaking");
       assert.equal(titlePhrase.lineRects, 1, width + ": title phrase stays on one line");
