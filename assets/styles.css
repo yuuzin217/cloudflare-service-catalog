@@ -259,6 +259,10 @@ select:focus-visible {
   text-wrap: balance;
 }
 
+.hero-description .summary-closing {
+  white-space: nowrap;
+}
+
 .search-wrap {
   display: flex;
   align-items: center;
