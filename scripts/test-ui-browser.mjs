@@ -114,6 +114,20 @@ try {
         const subtitleBreak = await page.locator(".hero-description br")
           .evaluate((br) => getComputedStyle(br).display);
         assert.notEqual(subtitleBreak, "none", width + ": subtitle preserves its phrase break");
+        const closing = await page.locator(".hero-description .summary-closing")
+          .evaluate((span) => {
+            const rect = span.getBoundingClientRect();
+            return {
+              text: span.textContent,
+              whiteSpace: getComputedStyle(span).whiteSpace,
+              lines: span.getClientRects().length,
+              right: rect.right
+            };
+          });
+        assert.equal(closing.text, "わかりやすく解説します。", width + ": closing phrase text");
+        assert.equal(closing.whiteSpace, "nowrap", width + ": closing phrase is nonbreaking");
+        assert.equal(closing.lines, 1, width + ": closing phrase stays on one line");
+        assert.ok(closing.right <= width + 1, width + ": closing phrase stays in viewport");
       }
       assert.equal(titlePhrase.text, "サービス図鑑", width + ": Japanese title phrase is intact");
       assert.equal(titlePhrase.whiteSpace, "nowrap", width + ": Japanese title is nonbreaking");
