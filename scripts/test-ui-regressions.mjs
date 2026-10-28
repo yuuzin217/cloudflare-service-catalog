@@ -22,6 +22,10 @@ assert.doesNotMatch(html, /id="sidebarUpdates"/, "hero changelog is not repeated
 assert.doesNotMatch(html, /id="serviceGrid" aria-live=/, "the result count alone announces filter changes");
 assert.match(css, /\.search-result-hint \{/);
 assert.match(css, /body\[data-theme="dark"\] \.category-card\.is-active/);
+assert.match(html, /fonts\.googleapis\.com\/css2\?family=IBM\+Plex\+Sans/, "IBM Plex fonts are requested");
+assert.match(html, /family=IBM\+Plex\+Sans\+JP/, "Japanese IBM Plex font is requested");
+assert.match(css, /font-family: "IBM Plex Sans", "IBM Plex Sans JP",/, "IBM Plex font stack is applied");
+assert.match(css, /\.hero-description\s*\{[^}]*text-wrap:\s*balance;/s, "hero copy uses balanced wrapping");
 assert.match(appJs, /prefers-reduced-motion/);
 assert.match(appJs, /scrollIntoView/);
 assert.match(appJs, /elements\.jumpToResults\.addEventListener/);

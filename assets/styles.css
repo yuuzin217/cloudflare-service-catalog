@@ -17,7 +17,7 @@
   --radius-card: 14px;
   --radius-control: 10px;
   --content-width: 1280px;
-  font-family: Inter, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  font-family: "IBM Plex Sans", "IBM Plex Sans JP", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -256,6 +256,11 @@ select:focus-visible {
   color: #5b6b80;
   font-size: clamp(15px, 1.6vw, 19px);
   letter-spacing: .01em;
+  text-wrap: balance;
+}
+
+.hero-description .summary-closing {
+  white-space: nowrap;
 }
 
 .search-wrap {
@@ -2243,7 +2248,6 @@ body[data-theme="dark"] .moon-icon {
   .hero-inner { gap: 16px; padding-top: 28px; padding-bottom: 19px; }
   .hero h1 { font-size: clamp(30px, 8vw, 39px); }
   .hero-description { margin: 9px 0 15px; font-size: 13px; }
-  .hero-description br { display: none; }
   .search-wrap { height: 48px; padding-left: 12px; }
   .search-icon { width: 20px; height: 20px; margin-right: 8px; }
   .search-icon svg { width: 20px; height: 20px; }
