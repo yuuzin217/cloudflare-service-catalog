@@ -2244,7 +2244,6 @@ body[data-theme="dark"] .moon-icon {
   .hero-inner { gap: 16px; padding-top: 28px; padding-bottom: 19px; }
   .hero h1 { font-size: clamp(30px, 8vw, 39px); }
   .hero-description { margin: 9px 0 15px; font-size: 13px; }
-  .hero-description br { display: none; }
   .search-wrap { height: 48px; padding-left: 12px; }
   .search-icon { width: 20px; height: 20px; margin-right: 8px; }
   .search-icon svg { width: 20px; height: 20px; }
