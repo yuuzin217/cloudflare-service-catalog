@@ -9,7 +9,7 @@ Cloudflare, Inc.が運営・承認・後援するサイトではなく、提携�
 - Cloudflare®およびCloudflareの製品名は、米国その他の国におけるCloudflare, Inc.の商標または登録商標です。[Cloudflareの商標ガイドライン](https://www.cloudflare.com/trademark/)を参照してください。本サイトはCloudflareの公式ロゴを使用せず、独自の図形を使用します。
 - 製品・サービスの説明は公式情報を参照した独自の日本語要約です。公式の文章・画像・図表をそのまま転載することを前提としません。各製品の根拠URLは `data/services.json`、更新情報の原典URLは `data/updates.json` に記録しています。
 - 本リポジトリのMITライセンスは、権利を保有する独自コード・文章などに適用されます。Cloudflareや第三者の商標、ロゴ、公式文書の著作権・ライセンスを再許諾するものではありません。公式文書を転載・翻訳・翻案する際は、対象資料のライセンスを個別に確認してください。[cloudflare/cloudflare-docs](https://github.com/cloudflare/cloudflare-docs)では原則CC BY 4.0が案内される一方、[Cloudflare Workersのライセンス説明](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)ではCC BY-SA 4.0の記載もあります。資料・範囲による条件の違いを一律に解釈しないでください。
-- 公開URLと互換性維持のため、既存GitHubリポジトリ名・GitHub Pagesのパスはこの変更では維持します。サイト上のブランド名には使用しません。
+- 旧リポジトリ名と旧GitHub Pages URLは移行対象です。旧Pages URLはリポジトリのリネームだけでは転送されないため、移行中の既存リンクには影響が出る可能性があります（[Pages URL移行Runbook](docs/REPOSITORY_PAGES_MIGRATION.md)）。
 
 ## プライバシーと外部通信
 
@@ -77,7 +77,7 @@ updates.jsonのpublishedAtには公式Changelogの公開日を記録します。
 3. Branch に main、フォルダーに /(root) を選び、保存します。
 4. Pagesの画面に表示される公開状態を確認します。
 
-mainブランチのルートを公開した場合の既定URLは https://yuuzin217.github.io/cloudflare-service-catalog/ です。Pagesの設定と公開状態は未確認のため、現時点では公開済みではありません。カスタムドメインが設定される場合はURLが異なります。
+リポジトリ名を `edge-service-catalog` に変更したうえで、main ブランチのルートを GitHub Pages の公開元に設定した場合の既定URLは https://yuuzin217.github.io/edge-service-catalog/ です。**リポジトリ名を変更しただけでは旧Pages URLは自動的に転送されません。** 実際の公開URL・Pages設定・公開状態は切り替え後に確認してください。カスタムドメイン設定がある場合はURLが異なります。変更手順・確認項目は [Pages URL移行Runbook](docs/REPOSITORY_PAGES_MIGRATION.md) に記録しています。
 
 ## 情報更新とメンテナンス
 
