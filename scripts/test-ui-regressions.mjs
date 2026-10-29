@@ -39,6 +39,10 @@ assert.match(html, /id="legal"[^>]*aria-labelledby="legalTitle"/, "legal/privacy
 assert.match(html, /localStorageに保存/, "theme storage practice is disclosed");
 assert.match(html, /独自のアクセス解析・広告・追跡Cookieを組み込んでいません/, "no tracking claim is disclosed");
 assert.match(html, /href="#legal"/, "footer links to legal and privacy section");
+assert.equal((html.match(/https:\/\/github\.com\/yuuzin217\/edge-service-catalog/g) || []).length, 3,
+  "all site-owned GitHub links use the renamed repository");
+assert.doesNotMatch(html, /github\.com\/yuuzin217\/cloudflare-service-catalog/,
+  "old repository links are absent after rename");
 assert.match(css, /font-family: "IBM Plex Sans", "IBM Plex Sans JP",/, "IBM Plex font stack is applied");
 assert.match(css, /\.hero-description\s*\{[^}]*text-wrap:\s*balance;/s, "hero copy uses balanced wrapping");
 assert.match(appJs, /prefers-reduced-motion/);
