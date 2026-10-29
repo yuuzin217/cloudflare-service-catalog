@@ -60,8 +60,14 @@ try {
     try {
       const page = await context.newPage();
       const errors = [];
+      const externalRequests = [];
+      page.on("request", (request) => {
+        if (new URL(request.url()).origin !== new URL(url).origin) externalRequests.push(request.url());
+      });
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(url, { waitUntil: "networkidle" });
+      assert.deepEqual(externalRequests, [], width + ": initial page load has no third-party requests");
+      assert.equal(await page.locator("#legal").count(), 1, width + ": legal and privacy notice is present");
       await page.locator(".service-card").first().waitFor();
 
       const expected = await page.evaluate(async () => {
