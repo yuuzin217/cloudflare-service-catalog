@@ -1,8 +1,15 @@
-# Cloudflare サービス図鑑
+# エッジサービス図鑑
 
-Cloudflareが提供する主要サービスを、日本語の概要・用途・関連サービスから探せる非公式の静的カタログです。製品情報はJSONで管理し、画面側でカテゴリ件数、検索結果、更新一覧を生成します。
+Cloudflare®の主要な製品・サービスを、日本語の概要・用途・関連サービスから探せる独立運営の非公式静的カタログです。製品情報はJSONで管理し、画面側でカテゴリ件数、検索結果、更新一覧を生成します。
 
-Cloudflareが運営するサイトではありません。Cloudflareおよび各サービス名は各社の商標です。最新の仕様、提供状況、料金は各ページからCloudflare公式情報をご確認ください。
+Cloudflare, Inc.が運営・承認・後援するサイトではなく、提携関係もありません。最新の仕様、提供状況、料金は各ページから公式情報をご確認ください。
+
+## 権利・商標・出典
+
+- Cloudflare®およびCloudflareの製品名は、米国その他の国におけるCloudflare, Inc.の商標または登録商標です。[Cloudflareの商標ガイドライン](https://www.cloudflare.com/trademark/)を参照してください。本サイトはCloudflareの公式ロゴを使用せず、独自の図形を使用します。
+- 製品・サービスの説明は公式情報を参照した独自の日本語要約です。公式の文章・画像・図表をそのまま転載することを前提としません。各製品の根拠URLは `data/services.json`、更新情報の原典URLは `data/updates.json` に記録しています。
+- 本リポジトリのMITライセンスは、権利を保有する独自コード・文章などに適用されます。Cloudflareや第三者の商標、ロゴ、公式文書の著作権・ライセンスを再許諾するものではありません。公式資料を転載・翻案する場合は、対象資料に適用される条件を個別に確認してください（[Cloudflare Docsのライセンス案内](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)／[公式ドキュメントリポジトリ](https://github.com/cloudflare/cloudflare-docs)）。
+- 公開URLと互換性維持のため、既存GitHubリポジトリ名・GitHub Pagesのパスはこの変更では維持します。サイト上のブランド名には使用しません。
 
 ## ローカルで起動する
 
@@ -31,7 +38,7 @@ Cloudflareが運営するサイトではありません。Cloudflareおよび各
 - カテゴリ選択や検索確定時のスクロールは `prefers-reduced-motion` を尊重します。結果一覧の見出しへフォーカスを移し、キーボード操作でも位置を把握できます。
 - ライト／ダークの手動設定はブラウザの `localStorage` に保持します。保存値がない場合はOS設定を使い、ストレージを利用できない場合もテーマ切り替えを継続します。
 - 「掲載データの最新確認日」はサービスとChangelogの `verifiedAt` の最大値で、全サービスを一括確認した日付ではありません。最新仕様と料金はCloudflare公式Docsを参照してください。
-- 回帰チェック：`node scripts/test-ui-regressions.mjs`。GitHub Actionsでは追加でPlaywright + Chromiumにより320px／390px／768px／1280pxの実ブラウザ操作（日本語IME・絞り込み解除後のフォーカス・ダイアログ・テーマ保持・リポジトリサブパス等）を検証し、スクリーンショットをArtifactとして保存します。Playwrightはテスト環境のみに導入し、公開サイトの実行依存にはしません。
+- 回帰チェック（独立ブランド・非公式表記の検証を含む）：`node scripts/test-ui-regressions.mjs`。GitHub Actionsでは追加でPlaywright + Chromiumにより320px／390px／768px／1280pxの実ブラウザ操作（日本語IME・絞り込み解除後のフォーカス・ダイアログ・テーマ保持・リポジトリサブパス等）を検証し、スクリーンショットをArtifactとして保存します。Playwrightはテスト環境のみに導入し、公開サイトの実行依存にはしません。
 
 ## データの構造
 
