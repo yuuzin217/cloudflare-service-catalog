@@ -8,8 +8,17 @@ Cloudflare, Inc.が運営・承認・後援するサイトではなく、提携�
 
 - Cloudflare®およびCloudflareの製品名は、米国その他の国におけるCloudflare, Inc.の商標または登録商標です。[Cloudflareの商標ガイドライン](https://www.cloudflare.com/trademark/)を参照してください。本サイトはCloudflareの公式ロゴを使用せず、独自の図形を使用します。
 - 製品・サービスの説明は公式情報を参照した独自の日本語要約です。公式の文章・画像・図表をそのまま転載することを前提としません。各製品の根拠URLは `data/services.json`、更新情報の原典URLは `data/updates.json` に記録しています。
-- 本リポジトリのMITライセンスは、権利を保有する独自コード・文章などに適用されます。Cloudflareや第三者の商標、ロゴ、公式文書の著作権・ライセンスを再許諾するものではありません。公式資料を転載・翻案する場合は、対象資料に適用される条件を個別に確認してください（[Cloudflare Docsのライセンス案内](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)／[公式ドキュメントリポジトリ](https://github.com/cloudflare/cloudflare-docs)）。
+- 本リポジトリのMITライセンスは、権利を保有する独自コード・文章などに適用されます。Cloudflareや第三者の商標、ロゴ、公式文書の著作権・ライセンスを再許諾するものではありません。公式文書を転載・翻訳・翻案する際は、対象資料のライセンスを個別に確認してください。[cloudflare/cloudflare-docs](https://github.com/cloudflare/cloudflare-docs)では原則CC BY 4.0が案内される一方、[Cloudflare Workersのライセンス説明](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)ではCC BY-SA 4.0の記載もあります。資料・範囲による条件の違いを一律に解釈しないでください。
 - 公開URLと互換性維持のため、既存GitHubリポジトリ名・GitHub Pagesのパスはこの変更では維持します。サイト上のブランド名には使用しません。
+
+## プライバシーと外部通信
+
+- ページ読み込み時、Google Fontsなどの外部フォントCDN、外部解析・広告スクリプトを利用しません。Webフォントの代わりにインストール済みのIBM Plexファミリーを優先し、ない場合はOSの日本語フォントへフォールバックします。そのため、2026-10-30の変更前と文字幅や見た目が異なる場合があります。
+- `localStorage`には任意のライト／ダークテーマの設定のみを保存します。カタログ自体にはログイン、フォーム送信、独自の追跡Cookie、ユーザー情報の独自収集機能はありません。
+- GitHub Pagesの配信時に発生するホスティング事業者の通信・アクセスログ、および利用者が任意で公式DocsやGitHubなどの外部リンクを開いた際の通信は別です。これらについて、このリポジトリが一切のデータ取扱いを行わないことまで保証するものではありません。
+- 一覧の各サービスは公式Docs・出典URLを表示し、公式Changelogは個別のリンクを表示します。根拠URLは事実確認のための参照であり、第三者の著作物の再利用を許可する意味ではありません。
+
+詳細なコンテンツ制作・権利確認の基準は [docs/CONTENT_RIGHTS_POLICY.md](docs/CONTENT_RIGHTS_POLICY.md) を参照してください。
 
 ## ローカルで起動する
 
