@@ -33,8 +33,12 @@ assert.doesNotMatch(html, /id="sidebarUpdates"/, "hero changelog is not repeated
 assert.doesNotMatch(html, /id="serviceGrid" aria-live=/, "the result count alone announces filter changes");
 assert.match(css, /\.search-result-hint \{/);
 assert.match(css, /body\[data-theme="dark"\] \.category-card\.is-active/);
-assert.match(html, /fonts\.googleapis\.com\/css2\?family=IBM\+Plex\+Sans/, "IBM Plex fonts are requested");
-assert.match(html, /family=IBM\+Plex\+Sans\+JP/, "Japanese IBM Plex font is requested");
+assert.doesNotMatch(html, /fonts\.(?:googleapis|gstatic)\.com|rel="preconnect"/, "no Google Fonts third-party requests");
+assert.doesNotMatch(css, /@import|https?:\/\//, "CSS does not load third-party resources");
+assert.match(html, /id="legal"[^>]*aria-labelledby="legalTitle"/, "legal/privacy notice is visible");
+assert.match(html, /localStorageに保存/, "theme storage practice is disclosed");
+assert.match(html, /独自のアクセス解析・広告・追跡Cookieを組み込んでいません/, "no tracking claim is disclosed");
+assert.match(html, /href="#legal"/, "footer links to legal and privacy section");
 assert.match(css, /font-family: "IBM Plex Sans", "IBM Plex Sans JP",/, "IBM Plex font stack is applied");
 assert.match(css, /\.hero-description\s*\{[^}]*text-wrap:\s*balance;/s, "hero copy uses balanced wrapping");
 assert.match(appJs, /prefers-reduced-motion/);
