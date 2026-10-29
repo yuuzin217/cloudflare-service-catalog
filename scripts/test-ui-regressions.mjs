@@ -8,14 +8,14 @@ const css = await readFile(new URL("../assets/styles.css", import.meta.url), "ut
 
 // Guard against accidental reintroduction of a vendor-like masthead or SEO branding.
 assert.equal((html.match(/class="brand-mark"/g) || []).length, 2, "header and footer have distinct catalog marks");
-assert.equal((html.match(/src="\\.\\/favicon\\.svg"/g) || []).length, 2, "own icon is reused");
+assert.equal((html.match(/src="\.\/favicon\.svg"/g) || []).length, 2, "own icon is reused");
 assert.doesNotMatch(html, /brand-wordmark|<svg viewBox="0 0 64 40"/, "old brand-like logo is absent");
 assert.doesNotMatch(html, /<meta[^>]+Cloudflare|<title>[^<]*Cloudflare/i, "Cloudflare is absent from SEO metadata");
 assert.match(html, /class="independence-note"[^>]*>[^<]*非公式・独立運営/, "nonofficial status is prominent");
-assert.match(html, /Cloudflare, Inc\\.による承認・提携・後援は受けていません/, "affiliation is disclaimed");
+assert.match(html, /Cloudflare, Inc\.による承認・提携・後援は受けていません/, "affiliation is disclaimed");
 assert.match(html, /Cloudflare®およびCloudflareの製品名は/, "trademark attribution is visible");
-assert.match(css, /\\.independence-note\\s*\\{/, "disclaimer has styles");
-assert.doesNotMatch(css, /\\.brand-wordmark/, "old brand wordmark styles are absent");
+assert.match(css, /\.independence-note\s*\{/, "disclaimer has styles");
+assert.doesNotMatch(css, /\.brand-wordmark/, "old brand wordmark styles are absent");
 
 function section(startName, endName) {
   const start = appJs.indexOf("  function " + startName + "(");
