@@ -17,7 +17,8 @@
   --radius-card: 14px;
   --radius-control: 10px;
   --content-width: 1280px;
-  font-family: "IBM Plex Sans", "IBM Plex Sans JP", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  /* Local font preference only: no third-party font network requests. */
+  font-family: "IBM Plex Sans", "IBM Plex Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -146,15 +147,11 @@ select:focus-visible {
   color: var(--orange);
 }
 
-.brand-mark svg {
+.brand-mark img {
+  display: block;
   width: 34px;
   height: 34px;
-  overflow: visible;
-  fill: #fff;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  object-fit: contain;
 }
 
 .primary-nav {
@@ -1230,6 +1227,43 @@ select:focus-visible {
   font-weight: 650;
 }
 
+.legal-section {
+  padding: 24px 0 30px;
+  border-top: 1px solid var(--line);
+  background: var(--wash);
+}
+
+.legal-section h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.legal-section p {
+  max-width: 1080px;
+  margin: 0 0 10px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.legal-section p:last-child { margin-bottom: 0; }
+
+.legal-section a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body[data-theme="dark"] .legal-section {
+  border-color: #344258;
+  background: #152136;
+}
+
+body[data-theme="dark"] .legal-section h2 { color: #dfe9f7; }
+body[data-theme="dark"] .legal-section p { color: #aab9cc; }
+body[data-theme="dark"] .legal-section a { color: #9cc6ff; }
+
 .site-footer {
   background: #fff;
 }
@@ -1248,7 +1282,7 @@ select:focus-visible {
 }
 
 .footer-brand .brand-mark,
-.footer-brand .brand-mark svg {
+.footer-brand .brand-mark img {
   width: 29px;
   height: 29px;
 }
@@ -1485,21 +1519,9 @@ select:focus-visible {
 }
 
 .brand-mark,
-.brand-mark svg {
-  width: 70px;
-  height: 44px;
-}
-
-.brand-mark svg {
-  fill: #f48120;
-  stroke: none;
-}
-
-.brand-wordmark {
-  margin-left: -9px;
-  font-size: 18px;
-  font-weight: 820;
-  letter-spacing: .08em;
+.brand-mark img {
+  width: 42px;
+  height: 42px;
 }
 
 .brand strong {
@@ -1627,6 +1649,17 @@ body[data-theme="dark"] .moon-icon {
 
 .hero-copy {
   min-width: 0;
+}
+
+.independence-note {
+  margin: 0 0 9px;
+  color: #526580;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+body[data-theme="dark"] .independence-note {
+  color: #aab9cc;
 }
 
 .hero h1 {
@@ -2183,7 +2216,6 @@ body[data-theme="dark"] .moon-icon {
 }
 
 @media (max-width: 1240px) {
-  .brand-wordmark { font-size: 15px; }
   .brand strong { font-size: 14px; }
   .header-tools { gap: 12px; }
   .verified-pill { padding-inline: 10px; }
@@ -2194,8 +2226,7 @@ body[data-theme="dark"] .moon-icon {
 
 @media (max-width: 1000px) {
   .topbar { gap: 14px; }
-  .brand-mark, .brand-mark svg { width: 55px; height: 38px; }
-  .brand-wordmark { font-size: 14px; }
+  .brand-mark, .brand-mark img { width: 36px; height: 36px; }
   .brand strong { font-size: 13px; }
   .primary-nav { gap: 14px; font-size: 12px; }
   .header-tools { gap: 8px; }
@@ -2239,8 +2270,7 @@ body[data-theme="dark"] .moon-icon {
 
 @media (max-width: 600px) {
   .brand { gap: 6px; font-size: 11px; }
-  .brand-mark, .brand-mark svg { width: 43px; height: 32px; }
-  .brand-wordmark { margin-left: -7px; font-size: 11px; letter-spacing: .05em; }
+  .brand-mark, .brand-mark img { width: 30px; height: 30px; }
   .brand strong { font-size: 11px; }
   .topbar { min-height: 58px; }
   .menu-toggle { width: 36px; height: 36px; }
@@ -2535,7 +2565,7 @@ body[data-theme="dark"] .updates-section {
   }
 
   .brand-mark,
-  .brand-mark svg {
+  .brand-mark img {
     width: 30px;
     height: 30px;
   }
@@ -3058,10 +3088,6 @@ body[data-theme="dark"] .category-card.is-active {
 
 /* Preserve breathing room for the search and navigation at the narrowest viewport. */
 @media (max-width: 360px) {
-  .brand-wordmark {
-    display: none;
-  }
-
   .topbar {
     gap: 8px;
   }

@@ -3,18 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cloudflareの主要サービスを日本語で探せる非公式カタログ。カテゴリ、タグ、用途から検索し、公式ドキュメントと最新情報を確認できます。">
+  <meta name="description" content="エッジサービス図鑑は、サービスの概要・用途・関連資料を日本語で探せる独立運営の非公式カタログです。">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cloudflare サービス図鑑">
-  <meta property="og:description" content="Cloudflareのサービスを日本語で分かりやすく解説。公式情報へのリンク付きの非公式カタログです。">
+  <meta property="og:title" content="エッジサービス図鑑">
+  <meta property="og:description" content="クラウド・エッジ関連サービスを日本語で探せる独立運営の非公式ガイドです。">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
-  <title>Cloudflare サービス図鑑 | 公式情報を日本語で探す</title>
+  <title>エッジサービス図鑑 | 非公式サービスガイド</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Sans+JP:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css">
   <script src="./assets/app.js" defer></script>
 </head>
@@ -23,15 +20,8 @@
 
   <header class="site-header">
     <div class="topbar shell">
-      <a class="brand" href="#top" aria-label="Cloudflare サービス図鑑 ホーム">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 64 40" focusable="false">
-            <path d="M17 31h34.4a8.6 8.6 0 0 0 1.2-17.1A19 19 0 0 0 17.2 13 9.1 9.1 0 0 0 17 31Z" />
-            <path d="M10 32.5h45.7a5.4 5.4 0 0 0 5.1-3.7H14.3A6.8 6.8 0 0 0 10 32.5Z" />
-          </svg>
-        </span>
-        <span class="brand-wordmark">CLOUDFLARE</span>
-        <strong>サービス図鑑</strong>
+      <a class="brand" href="#top" aria-label="エッジサービス図鑑 ホーム">
+        <span class="brand-mark" aria-hidden="true"><img src="./favicon.svg" width="40" height="40" alt=""></span><strong>エッジサービス図鑑</strong>
       </a>
 
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="メニューを開く">
@@ -61,8 +51,9 @@
     <section class="hero" id="top" aria-labelledby="pageTitle">
       <div class="shell hero-inner">
         <div class="hero-copy">
-          <h1 id="pageTitle">Cloudflare <span>サービス図鑑</span></h1>
-          <p class="hero-description">Compute・Storage・AI・Security・Network・Media・Zero Trust まで<br>Cloudflareのサービスを日本語で<span class="summary-closing">わかりやすく解説します。</span></p>
+          <p class="independence-note">非公式・独立運営のガイドです。Cloudflare, Inc.による承認・提携・後援は受けていません。</p>
+          <h1 id="pageTitle">エッジ<span>サービス図鑑</span></h1>
+          <p class="hero-description">Compute・Storage・AI・Security・Network・Media・Zero Trust まで<br>Cloudflare®のサービスを日本語で<span class="summary-closing">わかりやすく解説します。</span></p>
 
           <div class="search-wrap">
             <label class="sr-only" for="searchInput">サービスを検索</label>
@@ -190,9 +181,18 @@
           <h2 id="aboutTitle">公式情報を、日本語で見つけやすく。</h2>
         </div>
         <div class="about-copy">
-          <p>Cloudflareのサービスを探すための、独立した非公式カタログです。説明と分類は理解を助けるための要約です。最新の仕様、提供状況、料金は、リンク先のCloudflare公式情報をご確認ください。</p>
+          <p>Cloudflare®の製品・サービスを探すための独立した非公式カタログです。Cloudflare, Inc.との提携・協賛・承認関係はありません。説明と分類は理解を助けるための独自の要約です。最新の仕様、提供状況、料金は、リンク先の公式情報をご確認ください。</p>
           <a class="text-link" href="https://developers.cloudflare.com/products/" target="_blank" rel="noopener noreferrer">Cloudflare Docs の製品一覧を見る <span aria-hidden="true">↗</span></a>
         </div>
+      </div>
+    </section>
+
+    <section class="legal-section" id="legal" aria-labelledby="legalTitle">
+      <div class="shell">
+        <h2 id="legalTitle">権利・出典とプライバシー</h2>
+        <p>このサイトは独立した非公式の情報ガイドです。Cloudflare, Inc.による運営・提携・承認・後援を受けていません。Cloudflare®および各製品名はCloudflare, Inc.の商標または登録商標です。公式ロゴ・公式画像は使用していません。</p>
+        <p>サービス説明と更新情報は、参照元へのリンクを付した独自の日本語要約です。内容の正確性や継続提供を保証するものではありません。元資料の著作権とライセンスは元の権利者に帰属します。詳しくは<a href="https://github.com/yuuzin217/cloudflare-service-catalog/blob/main/README.md" target="_blank" rel="noopener noreferrer">リポジトリの権利・出典に関する説明</a>をご覧ください。</p>
+        <p>このサイトは独自のアクセス解析・広告・追跡Cookieを組み込んでいません。テーマ設定だけをブラウザ内のlocalStorageに保存し、サーバーには送信しません。Webフォントも外部サーバーから取得しません。ただし、ホスティング事業者によるアクセスログ等の取り扱いは当該事業者の規約に従います。外部サイトを開くと、移動先で利用者情報が処理される場合があります。</p>
       </div>
     </section>
   </main>
@@ -209,20 +209,20 @@
     <div class="shell footer-main">
       <div class="footer-brand">
         <a class="brand" href="#top">
-          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 40" focusable="false"><path d="M17 31h34.4a8.6 8.6 0 0 0 1.2-17.1A19 19 0 0 0 17.2 13 9.1 9.1 0 0 0 17 31Z"/><path d="M10 32.5h45.7a5.4 5.4 0 0 0 5.1-3.7H14.3A6.8 6.8 0 0 0 10 32.5Z"/></svg></span>
-          <span class="brand-wordmark">CLOUDFLARE</span><strong>サービス図鑑</strong>
+          <span class="brand-mark" aria-hidden="true"><img src="./favicon.svg" width="40" height="40" alt=""></span><strong>エッジサービス図鑑</strong>
         </a>
-        <p>Cloudflare公式サイトではありません。</p>
+        <p>Cloudflare, Inc.とは無関係の非公式サイトです。</p>
       </div>
       <nav class="footer-links" aria-label="フッターナビゲーション">
         <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare公式サイト ↗</a>
         <a href="https://developers.cloudflare.com/products/" target="_blank" rel="noopener noreferrer">公式Docs ↗</a>
         <a href="https://github.com/yuuzin217/cloudflare-service-catalog" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="#legal">権利・出典・プライバシー</a>
       </nav>
     </div>
     <div class="shell footer-meta">
       <span>掲載データの最新確認日：<time id="lastVerifiedDate">—</time>（全件の再確認日ではありません）</span>
-      <span>Cloudflareおよび各サービス名は各社の商標です。</span>
+      <span>Cloudflare®およびCloudflareの製品名は、米国その他の国におけるCloudflare, Inc.の商標または登録商標です。</span>
     </div>
   </footer>
 
