@@ -2177,7 +2177,7 @@ body[data-theme="dark"] .independence-note {
   padding-top: 28px;
 }
 
-mmedia (max-width: 1240px) {
+@media (max-width: 1240px) {
   .brand strong { font-size: 14px; }
   .header-tools { gap: 12px; }
   .verified-pill { padding-inline: 10px; }
@@ -2186,7 +2186,7 @@ mmedia (max-width: 1240px) {
   .catalog-title-wrap { flex-wrap: wrap; gap: 4px 9px; }
 }
 
-mmedia (max-width: 1000px) {
+@media (max-width: 1000px) {
   .topbar { gap: 14px; }
   .brand-mark, .brand-mark img { width: 36px; height: 36px; }
   .brand strong { font-size: 13px; }
@@ -3050,7 +3050,7 @@ body[data-theme="dark"] .category-card.is-active {
 
 /* Preserve breathing room for the search and navigation at the narrowest viewport. */
 @media (max-width: 360px) {
-.topbar {
+  .topbar {
     gap: 8px;
   }
 }
