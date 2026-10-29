@@ -2177,8 +2177,8 @@ body[data-theme="dark"] .independence-note {
   padding-top: 28px;
 }
 
-@media (max-width: 1240px) {
-.brand strong { font-size: 14px; }
+mmedia (max-width: 1240px) {
+  .brand strong { font-size: 14px; }
   .header-tools { gap: 12px; }
   .verified-pill { padding-inline: 10px; }
   .hero-inner { grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; }
@@ -2186,10 +2186,10 @@ body[data-theme="dark"] .independence-note {
   .catalog-title-wrap { flex-wrap: wrap; gap: 4px 9px; }
 }
 
-@media (max-width: 1000px) {
+mmedia (max-width: 1000px) {
   .topbar { gap: 14px; }
   .brand-mark, .brand-mark img { width: 36px; height: 36px; }
-.brand strong { font-size: 13px; }
+  .brand strong { font-size: 13px; }
   .primary-nav { gap: 14px; font-size: 12px; }
   .header-tools { gap: 8px; }
   .verified-pill { font-size: 10px; }
@@ -2233,7 +2233,7 @@ body[data-theme="dark"] .independence-note {
 @media (max-width: 600px) {
   .brand { gap: 6px; font-size: 11px; }
   .brand-mark, .brand-mark img { width: 30px; height: 30px; }
-.brand strong { font-size: 11px; }
+  .brand strong { font-size: 11px; }
   .topbar { min-height: 58px; }
   .menu-toggle { width: 36px; height: 36px; }
   .hero { background-size: cover, auto 100%; }
