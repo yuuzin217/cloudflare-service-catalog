@@ -8,8 +8,8 @@
 ## 今回の作業結果
 
 - 公式の登録先URLへのアクセス結果: サービス61/61件、更新28/29件の本文ページを取得。更新1件は404（`workers-byoip-context-20261013`）。
-- **詳細対照: 7件** — 公式本文の記述を見ながら日本語見出し・要約と照合。特定の専門用語、版数、変更日時といった事実のみを扱い、元資料の具体的な例示や構成を持ち込まないようチェック。
-- **一次確認（未完了）: 82件** — 公式ページを取得し、短い機能・変更の説明であることを確認。完全な表現・文の構造比較と権利帰属の検証は引き続き必要。
+- **詳細対照: 28件** — 公式本文の記述を見ながら日本語見出し・要約と照合。特定の専門用語、版数、変更日時といった事実のみを扱い、元資料の具体的な例示や構成を持ち込まないようチェック。
+- **一次確認（未完了）: 61件** — 公式ページを取得し、短い機能・変更の説明であることを確認。完全な表現・文の構造比較と権利帰属の検証は引き続き必要。
 - **要原典再確認: 1件** — 公式の参照URLが404。関連する二次情報の存在だけでは原典の検証・再利用条件の確証にはならない。
 - URLを開けたことや公式情報と一致する事実が存在することは、元の創作的な文章を翻案してもよいという許諾ではない。
 - 確認済みページにもURLリダイレクトがある。例: Browser Rendering→Browser Run、Page Shield→Client-side security、Cloudflare One旧Docsパス。これらは今回の著作権調査ではリンク切れ扱いにしない。製品名・URLの変更は別の根拠確認を要する。
@@ -97,37 +97,37 @@
 | service | `realtime` | https://developers.cloudflare.com/realtime/ | 一次確認 | 機能・利用目的の短い日本語説明。公式概要へアクセス済み、表現構成の詳細比較は未完了。 |
 | update | `waf-brotli-nextjs-emergency-20261025` | https://developers.cloudflare.com/changelog/post/2026-10-25-emergency-waf-release/ | 詳細対照 | CVE番号、Log既定、既存Block上書きの影響を原典本文と照合。具体的なリスクを事実中心に編集。 |
 | update | `d1-undelete-seven-days-20261023` | https://developers.cloudflare.com/changelog/post/2026-10-23-undelete-seven-day-window/ | 詳細対照 | 7日制限の条件と削除後の復元可否を原典本文と照合。機能変更の事実のみ記述。 |
-| update | `workers-builds-package-manager-20261023` | https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `warp-windows-beta-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `warp-macos-beta-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-warp-macos-beta/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `agents-mcp-sse-retirement-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflare-mcp-servers-retire-sse/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
+| update | `workers-builds-package-manager-20261023` | https://developers.cloudflare.com/changelog/post/2026-10-23-workers-builds-pin-npm-version/ | 詳細対照 | packageManagerによるnpm固定と対象パッケージマネージャーを記事本文で照合。コード例は転載せず簡潔化。 |
+| update | `warp-windows-beta-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-warp-windows-beta/ | 詳細対照 | Betaバージョン・Global Acceleration・アンインストール保護・MTU改善を公式の変更一覧と照合。 |
+| update | `warp-macos-beta-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-warp-macos-beta/ | 詳細対照 | macOS 15.0最低要件と14非対応・接続関連の改善を原典のBetaリリースノートと照合。 |
+| update | `agents-mcp-sse-retirement-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflare-mcp-servers-retire-sse/ | 詳細対照 | MCPサーバーの/mcp対応・/sse廃止とHTTP 410を記事の明示事項で照合。 |
 | update | `agents-pi14-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-pi-harness-pi-1-4/ | 詳細対照 | Pi 1.4／SDK 0.30.0、復旧改善、ストレージ互換性の注意を原典本文と照合。 |
 | update | `sandboxes-emudhra-ca-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-emudhra-certificates/ | 詳細対照 | SDK 0.x／1.x別の必要対応を原典本文と照合。詳細な手順は転載せず利用者が実施すべき要旨を簡略化。 |
 | update | `tunnel-path-normalization-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/ | 詳細対照 | 2026.10.0と2027-01-25の切替予定およびAccess条件を原典本文と照合。 |
-| update | `tunnel-read-monitor-ga-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `agents-createai-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-createai/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `basin-sql-offset-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `waf-managed-emergency-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-cfmr/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `waf-free-emergency-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-free/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `warp-windows-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-windows-ga/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `warp-macos-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-macos-ga/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `warp-linux-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-linux-ga/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `agents-mcp-step-up-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-cloudflare-mcp-step-up/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `bots-precursor-monitor-mode-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-precursor-monitor-mode/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `cloud-workload-security-beta-20261019` | https://developers.cloudflare.com/changelog/post/2026-10-19-cloud-workload-security-beta/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `workers-ai-clairic-preview-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `workers-ai-deepseek-v41-flash-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-deepseek-v4.1-flash-workers-ai/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `workers-cron-local-explorer-2026-10-17` | https://developers.cloudflare.com/changelog/post/2026-10-17-local-explorer-cron-triggers/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
+| update | `tunnel-read-monitor-ga-20261022` | https://developers.cloudflare.com/changelog/post/2026-10-22-granular-read-and-monitor-ga/ | 詳細対照 | Tunnel単位のRead And Monitorロール、ログのストリーミング、GAを記事で照合。 |
+| update | `agents-createai-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-createai/ | 詳細対照 | createAI追加と旧2プロバイダーの非推奨を記事本文と照合。サンプルコードや比喩は転記しない。 |
+| update | `basin-sql-offset-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-basin-sql-offset/ | 詳細対照 | OFFSETとLIMITの役割を記事と照合。原典のSQLコード例は転載しない。 |
+| update | `waf-managed-emergency-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-cfmr/ | 詳細対照 | Managed Rulesetへの異常実行検知7ルールとBlock動作を原典のルール表と照合。 |
+| update | `waf-free-emergency-20261021` | https://developers.cloudflare.com/changelog/post/2026-10-21-emergency-waf-release-free/ | 詳細対照 | Free Rulesetの7ルールとBlock動作を原典のルール表と照合。表は転載しない。 |
+| update | `warp-windows-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-windows-ga/ | 詳細対照 | Windows GA版のバージョンと証明書チェーン修正を原典本文と照合。 |
+| update | `warp-macos-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-macos-ga/ | 詳細対照 | macOS GA版のバージョンと証明書チェーン修正を原典本文と照合。 |
+| update | `warp-linux-client-2026-10-20` | https://developers.cloudflare.com/changelog/post/2026-10-20-warp-linux-ga/ | 詳細対照 | Linux GA版のバージョンと証明書チェーン修正を原典本文と照合。 |
+| update | `agents-mcp-step-up-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-cloudflare-mcp-step-up/ | 詳細対照 | MCP Step-up認可による追加権限の要求タイミングを原典本文で照合。 |
+| update | `bots-precursor-monitor-mode-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-precursor-monitor-mode/ | 詳細対照 | Precursor Monitorでボットスコア・Challenge結果へ影響させず検知を確認できる点を照合。 |
+| update | `cloud-workload-security-beta-20261019` | https://developers.cloudflare.com/changelog/post/2026-10-19-cloud-workload-security-beta/ | 詳細対照 | CWSのBeta提供・APIポリシーとZero Trust Freeの利用条件を原典本文と照合。 |
+| update | `workers-ai-clairic-preview-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai/ | 詳細対照 | ClairicのPreview・型付き値抽出を原典と照合。公式の具体的な入力例は使わない。 |
+| update | `workers-ai-deepseek-v41-flash-2026-10-19` | https://developers.cloudflare.com/changelog/post/2026-10-19-deepseek-v4.1-flash-workers-ai/ | 詳細対照 | モデル提供開始・モデル名称を原典本文と照合。マーケティング用表現は使用しない。 |
+| update | `workers-cron-local-explorer-2026-10-17` | https://developers.cloudflare.com/changelog/post/2026-10-17-local-explorer-cron-triggers/ | 詳細対照 | Local Explorerでscheduled()を手動実行可能になった機能を原典本文と照合。 |
 | update | `ai-search-cjk-keyword-search-2026-10-16` | https://developers.cloudflare.com/changelog/post/2026-10-16-cjk-keyword-search/ | 詳細対照 | trigram・CJK検索のサポート事実を原典本文と照合。公式例文は転載しない。 |
-| update | `tunnels-platforms-50000-routes-2026-10-16` | https://developers.cloudflare.com/changelog/post/2026-10-16-tunnels-for-platforms-and-50k-routes/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `gateway-workers-public-beta-20261015` | https://developers.cloudflare.com/changelog/post/2026-10-15-gateway-workers-public-beta/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
-| update | `workers-build-tooling-20261014` | https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/ | 一次確認 | 公式Changelog本文にアクセスし、日付・版数・機能名・変更内容を概観。見出し/文章構成の詳細対照は継続。 |
+| update | `tunnels-platforms-50000-routes-2026-10-16` | https://developers.cloudflare.com/changelog/post/2026-10-16-tunnels-for-platforms-and-50k-routes/ | 詳細対照 | デフォルト5万ルートとTunnels for Platformsを原典と照合。料金・上限の別数値は転載しない。 |
+| update | `gateway-workers-public-beta-20261015` | https://developers.cloudflare.com/changelog/post/2026-10-15-gateway-workers-public-beta/ | 詳細対照 | Gateway HTTPポリシーからWorkersへのForward連携および全Zero Trustプラン対象を原典と照合。 |
+| update | `workers-build-tooling-20261014` | https://developers.cloudflare.com/changelog/post/2026-10-14-workers-builds-default-tooling/ | 詳細対照 | 既定ツールチェーンのバージョン更新、個別指定による上書きを原典の表と照合。表は転載しない。 |
 | update | `workers-byoip-context-20261013` | https://developers.cloudflare.com/changelog/post/2026-10-13-byoip-workers-subrequest-context/ | 要原典再確認 | 公式Changelogの指定URLが404。別の公式記事で公開日・事実を確証できず、原文比較不可。公開表示を確認済み扱いにしない。 |
 | update | `workers-runtime-grace-period-20261012` | https://developers.cloudflare.com/changelog/post/2026-10-12-longer-runtime-update-grace-period/ | 詳細対照 | 最大20分の猶予およびWebSocketが途中切断され得る注意書きを原典本文と照合。 |
 
 ## 今後の実務
 
-1. **一次確認82件**: 公式原文の文章・段落構成（英語の逐語翻訳、比喩、具体的なユースケースの順番を含む）とJSONの個別フィールドを詳細に対照。必要なら記述をさらに短い独自の事実説明に書き換え、台帳の判定と根拠を更新する。
+1. **一次確認61件**: 公式原文の文章・段落構成（英語の逐語翻訳、比喩、具体的なユースケースの順番を含む）とJSONの個別フィールドを詳細に対照。必要なら記述をさらに短い独自の事実説明に書き換え、台帳の判定と根拠を更新する。
 2. **404の1件**: Cloudflare公式の元記事または同等の一次記録を見つけてURLと日付・内容を検証。見つからなければ、無理に公式リンクを別のページで代用しない。記事を残すか非掲載にするかは根拠に基づき判断する。
 3. **LICENSE著作権者**: Git履歴以外に第三者の寄稿・外部素材の取り込みがあるか、所有者に確認する。外部コードや文章があるなら個別のライセンスを保全する。
 4. **公開確認**: 詳細表示から各サービスの公式Docs、各Changelogへのリンクを確認する。404記事のリンクを「正常」と判定しない。
