@@ -66,6 +66,7 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 - `docsUrl`/`sourceUrls`/`sourceUrl`が正しく表示されることを確認し、出典URLだけで転載権限を取得したと解釈しません。
 - 商標・独立運営の表記、外部フォント/CDN不使用、テーマ保存の説明が保持されていることを確認します。
 - 疑義が残る箇所を`verifiedAt`の更新だけで「確認済み」にしません。調査が完了した箇所のみ修正します。
+- 著作権の個別照合状況は [コンテンツ監査台帳](CONTENT_AUDIT_2026-10-30.md) に記録します。`summaryJa`、`descriptionJa`、`titleJa`、`sourceUrl`、`docsUrl`を変更した場合は、当該IDの判定・根拠を再評価して台帳を更新します。**一次確認**は権利クリアランスではありません。原典を取得できない記事を、根拠のない別URLへ差し替えたり無条件に削除したりしません。
 
 ## 7. JSONを検証する
 
@@ -73,9 +74,12 @@ Cloudflare公式情報を確認し、サービス図鑑のJSONを安全に更新
 
     node scripts/validate-data.mjs
 
+台帳検証は全件のID・原典URL・個別ステータスの記録を確認する構造テストです。**文章の類似性や著作権の適法性を判定するものではありません。**
+
 成功時はカテゴリ数、サービス数、更新情報数が表示されます。JSON構文、必須項目、重複ID・名前・主要URL、カテゴリ、関連参照、許可された提供状況、日付と更新日の降順、公式URL、料金URLの根拠登録、Changelog URLの重複を検証します。P2回帰項目は次も実行します。
 
     node scripts/test-regressions.mjs
+    node scripts/validate-content-audit.mjs
 
 エラーが出た場合はPRを作らず修正して再実行します。
 
