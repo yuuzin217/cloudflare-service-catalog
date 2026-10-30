@@ -77,7 +77,7 @@ updates.jsonのpublishedAtには公式Changelogの公開日を記録します。
 3. Branch に main、フォルダーに /(root) を選び、保存します。
 4. Pagesの画面に表示される公開状態を確認します。
 
-リポジトリ名を `edge-service-catalog` に変更したうえで、main ブランチのルートを GitHub Pages の公開元に設定した場合の既定URLは https://yuuzin217.github.io/edge-service-catalog/ です。**リポジトリ名を変更しただけでは旧Pages URLは自動的に転送されません。** 実際の公開URL・Pages設定・公開状態は切り替え後に確認してください。カスタムドメイン設定がある場合はURLが異なります。変更手順・確認項目は [Pages URL移行Runbook](docs/REPOSITORY_PAGES_MIGRATION.md) に記録しています。
+リポジトリ名は `edge-service-catalog` へ変更済みで、GitHub上の案内先は https://yuuzin217.github.io/edge-service-catalog/ です。2026-10-30のリネーム後、GitHub Pagesのデプロイ成功を確認していますが、利用者側の実HTTP応答、HTTPSでの表示、サイト内操作の確認は別途必要です。**旧Pages URLは自動的に転送されません。** Source・カスタムドメイン設定を含む移行手順・確認項目は [Pages URL移行Runbook](docs/REPOSITORY_PAGES_MIGRATION.md) に記録しています。
 
 ## 情報更新とメンテナンス
 
