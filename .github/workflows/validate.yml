@@ -26,12 +26,14 @@ jobs:
         run: |
           node --check assets/app.js
           node --check scripts/test-regressions.mjs
+          node --check scripts/validate-content-audit.mjs
           node --check scripts/test-ui-regressions.mjs
           node --check scripts/test-ui-browser.mjs
       - name: Validate catalog and UX regression
         run: |
           node scripts/validate-data.mjs
           node scripts/test-regressions.mjs
+          node scripts/validate-content-audit.mjs
           node scripts/test-ui-regressions.mjs
 
   browser:
