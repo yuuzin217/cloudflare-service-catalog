@@ -18,7 +18,7 @@ Cloudflare, Inc.が運営・承認・後援するサイトではなく、提携�
 - GitHub Pagesの配信時に発生するホスティング事業者の通信・アクセスログ、および利用者が任意で公式DocsやGitHubなどの外部リンクを開いた際の通信は別です。これらについて、このリポジトリが一切のデータ取扱いを行わないことまで保証するものではありません。
 - 一覧の各サービスは公式Docs・出典URLを表示し、公式Changelogは個別のリンクを表示します。根拠URLは事実確認のための参照であり、第三者の著作物の再利用を許可する意味ではありません。
 
-詳細なコンテンツ制作・権利確認の基準は [docs/CONTENT_RIGHTS_POLICY.md](docs/CONTENT_RIGHTS_POLICY.md) を参照してください。
+詳細なコンテンツ制作・権利確認の基準は [docs/CONTENT_RIGHTS_POLICY.md](docs/CONTENT_RIGHTS_POLICY.md) を参照してください。個別の原典照合状況は [Issue #10監査台帳](docs/CONTENT_AUDIT_2026-10-30.md) に記録しています。**90件の全件逐条照合・法的権利確認はまだ完了していません。**
 
 ## ローカルで起動する
 
