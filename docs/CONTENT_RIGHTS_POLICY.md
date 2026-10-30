@@ -35,5 +35,5 @@
 ## 保留中の判断事項
 
 - 個別のサービス・Changelog原文との**全件表現比較**は未完了。出典URL登録とデータ整合性の自動テストは、翻訳・翻案の法律判断の代わりにはならない。
-- `cloudflare-service-catalog`というGitHubリポジトリ名とGitHub Pages公開URLは、URL互換性のため維持。今後の名称変更にはPages URL移行・リンク更新・周知が必要で、本文のPRだけで解消できない。
+- GitHubリポジトリは `edge-service-catalog` へ改名済み。GitHub上の新Pages案内URLは `https://yuuzin217.github.io/edge-service-catalog/`。旧URLの非転送リスク、旧リンクの更新、実サイト検証およびロールバックは [Pages URL移行Runbook](REPOSITORY_PAGES_MIGRATION.md) を参照。GitHub Pagesデプロイ成功だけで利用者環境の実動作確認が完了したとは扱わない。
 - 法的な適法性や商標利用許可は保証・取得していない。判断が必要な場合は権利者・専門家に確認する。

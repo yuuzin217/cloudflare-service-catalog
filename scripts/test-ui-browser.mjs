@@ -8,7 +8,8 @@ import { chromium } from "playwright";
 // No production dependencies or public endpoints. Test a GitHub Pages-style
 // repository subpath against the checked-out static files.
 const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
-const prefix = "/cloudflare-service-catalog/";
+// Preview the post-rename GitHub Pages subpath without changing the production repository.
+const prefix = "/edge-service-catalog/";
 const mime = {
   ".css": "text/css", ".js": "text/javascript", ".json": "application/json",
   ".svg": "image/svg+xml", ".html": "text/html"
