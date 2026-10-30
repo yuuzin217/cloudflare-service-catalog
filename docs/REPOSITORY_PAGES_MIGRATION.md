@@ -1,11 +1,11 @@
 # GitHubリポジトリ名・Pages公開URL移行Runbook（Issue #9）
 
 更新日: 2026-10-30
-状態: **移行用PRを準備中。GitHubリポジトリのリネームと公開URL切替は未実施。**
+状態: **リポジトリ改名をGitHub APIで確認済み。移行PR #11はレビュー・マージ対象。GitHub Pagesデプロイ成功、新URLの実HTTP応答と個別ページ動作は未確認。**
 
 ## 1. 変更対象と影響
 
-| | 移行前（現在） | 移行後（候補） |
+| | 移行前（履歴） | 移行後（GitHub上の現行名） |
 | --- | --- | --- |
 | リポジトリ | `yuuzin217/cloudflare-service-catalog` | `yuuzin217/edge-service-catalog` |
 | リポジトリURL | https://github.com/yuuzin217/cloudflare-service-catalog | https://github.com/yuuzin217/edge-service-catalog |
@@ -21,25 +21,25 @@ GitHub公式ドキュメントによれば、リポジトリ名変更時に **Gi
 
 - 確認済み: `main`で独立ブランド・権利表記（PR #8）を導入。CSS/JS/JSONは相対URLで静的ファイルを読み込んでいる。移行準備PRで `index.html` のGitHub参照3か所、README/ポリシー、Playwrightの固定パスを更新する。
 - 確認済み: ChatGPTの**Cloudflareサービス図鑑 週次更新**定期タスクは旧リポジトリ・旧Pages URLをプロンプトに保持している（毎週月曜7:00 JST、タスクID: `6ad854a008d881918b18dfcaa73527ac`）。**切替後すぐに更新する**。
-- 確認済み: 新リポジトリ名 `yuuzin217/edge-service-catalog` は準備時点のGitHub REST参照で404（未作成の可能性）。リネーム可能性を保証するものではない。
-- **未確認**: GitHub Pagesの現在の設定（Branch／Actions、フォルダー、カスタムドメイン、公開ドメイン設定）を参照できていない。GitHubのリポジトリメタ情報に`has_pages: true`はあるが、実URLと構成を所有者が `Settings → Pages` で確認する必要がある。
+- 確認済み: 2026-10-30にGitHub APIで `yuuzin217/edge-service-catalog` の実在、既存PR #11の継続、`main`の継続を確認。GitHub ActionsのPages deploymentは[成功](https://github.com/yuuzin217/edge-service-catalog/actions/runs/40989525319)している。これは実サイトの表示・JSONのHTTP応答を直接確認したことを意味しない。
+- **未確認**: GitHub PagesのSource・フォルダー・カスタムドメイン設定はAPIのアクセス制約で直接確認できていない。リポジトリメタ情報に `has_pages: true` と新Pages既定URLの `homepage` があり、改名後のデプロイがSUCCESS。実HTTP応答・HTTPSでの個別動作・カスタムドメインは実サイトまたは `Settings → Pages` で別途確認する。
 - 未確認: 他サイト、README以外の外部リンク、ブックマーク、CI以外の外部連携・API・キャッシュでの旧URLの利用。Github検索等で追加調査する。
-- 現在のURLはGitHub Pagesの**既定URL候補**であり、カスタムドメインがあると異なる。
+- リポジトリメタ情報の `homepage` は `https://yuuzin217.github.io/edge-service-catalog/` になっている。実サイトへの接続確認は未実施（検証環境からDNS解決不可）。
 
-## 2. 変更前のpreflight（必須）
+## 2. 事前確認・改名後の未完了事項
 
 - [ ] リポジトリ `Settings → Pages` で、公開URL、Source、Branch/Folder、CNAME、HTTPSを確認・記録する（スクリーンショット等）。
 - [ ] 現在の公開サイトがHTTPSで開き、検索、カテゴリ、詳細、最新更新、外部公式Docsリンクが動作することを確認する。
-- [ ] 新リポジトリ名の使用可能性を実際に確認する。
+- [x] リポジトリ改名を確認する。GitHub APIで `yuuzin217/edge-service-catalog` が確認できている。
 - [ ] 既存のPRやワークフローを確認し、リネーム直前にリポジトリ変更の競合がないことを確認する。
 - [ ] 旧Pages URL利用箇所（ユーザー側のブックマークや公開紹介リンク等）と週次自動更新タスクを移行対象に含める。
-- [ ] 移行用PRのNode検証・PlaywrightがすべてPASSであることを確認する。
-- [ ] **所有者の明示承認**: 変更対象、旧Pages URLがリダイレクトされないこと、短時間の公開断・リンク切れリスク、ロールバック手順を確認する。
+- [x] 移行用PRのNode検証・PlaywrightがすべてPASSであることを確認する（改名前ヘッドのCI PASS。文書変更後は再実行）。
+- [x] **リポジトリ改名を所有者が実施**。旧Pages URLが転送されない点は引き続き残余リスク。
 
-## 3. 本番移行手順（承認後に順序を厳守）
+## 3. 本番移行手順（改名後は残工程のみ実施）
 
-1. **GitHubリポジトリの名前変更**: `Settings → General → Repository name` にて `edge-service-catalog` へ変更。これは本番公開URLに影響する操作であり、明示承認なしに実行しない。
-2. **Pagesの公開設定確認**: 名前変更後のリポジトリの `Settings → Pages` を開く。新URLの表示、公開元、Deploy状況とHTTPSを確認する。自動的な公開や転送は保証しない。設定が変更されていた場合は記録した旧Sourceに沿って必要な設定を復元する（変更に追加承認が必要なら停止）。
+1. **完了：GitHubリポジトリの名前変更**: 所有者が `edge-service-catalog` へ改名し、GitHub APIで確認済み。
+2. **一部完了：Pagesの公開設定確認**: GitHub Pagesの改名後デプロイは成功。`Settings → Pages` で新URLの表示、公開元とHTTPSを確認し、実サイトの表示を確認する。自動的な旧URL転送はない。
 3. **移行用PRを新リポジトリ名側で再取得・レビュー**: 最新のmainとの競合、改名後のPRリンク、CIを確認する。ソースは静的相対パスなので、新しいパスでの閲覧が想定される。GitHubリンクと文書はPRをマージすると新URLを指すようになる。マージは所有者の明示指示を得て実施する。
 4. **定期タスクを更新**: タスク `6ad854a008d881918b18dfcaa73527ac` のプロンプト内の旧GitHub/Pages URLを新URLへ変更し、既存の月曜7:00 JSTスケジュール・制約・監査手順は維持する。更新結果と次回実行を確認。
 5. **外部参照とローカルGitリモート更新**: `git remote set-url origin git@github.com:yuuzin217/edge-service-catalog.git` など、既存のSSH/HTTPS方式を維持して移行する。他のGitHub Issue、README、紹介文、保存リンク等を更新する。
@@ -49,7 +49,7 @@ GitHub公式ドキュメントによれば、リポジトリ名変更時に **Gi
 ## 4. ロールバックと停止条件
 
 ### 停止条件
-- 新しいリポジトリ名が利用できない、カスタムドメインを含むPagesの構成不明、CI不合格、本番URL影響への承認なし、作業対象のPRが更新されている、予期しない外部依存が判明した場合は、名前変更・PRマージを行わない。
+- PRの競合、CI不合格、GitHubのリポジトリURL不一致、予期しない外部依存が判明した場合はPRマージを行わない。Pagesの実HTTP確認が環境上不可能な場合、CI・デプロイPASSを根拠にPRをマージしつつ実サイト検証は未完了と報告し、Issueを継続する。
 - 名前変更後、新URLに継続的な404、HTTPS不備、データ読込失敗があれば、影響範囲を記録し、公開設定/Actionsの不備を先に確認する。闇雲な再実行や機能変更をしない。
 
 ### 切り戻し
